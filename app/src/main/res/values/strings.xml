@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MoodSwings</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="welcome_to">Welcome To</string>
+    <string name="sign_in">Sign-In</string>
+    <string name="moodswings">MoodSwings</string>
+    <string name="a_mood_monitoring_app">A Mood Monitoring App</string>
+    <string name="todo">TODO</string>
+</resources>
