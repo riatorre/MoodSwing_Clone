@@ -1,12 +1,17 @@
 package com.example.moodswings;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
+    private FirebaseAuth auth;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView  bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) navListener);
+        auth = FirebaseAuth.getInstance();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
@@ -74,5 +82,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-
+    @Override
+    public void onStart(){
+        super.onStart();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser == null){
+            Log.d("AUTHENTICATION","User not Authenticated");
+            Intent authIntent = new Intent(this, sign_in.class);
+            authIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(authIntent);
+            finish();
+        }
+    }
 }

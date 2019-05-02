@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "504373766341",
+    "firebase_url": "https://moodswing-9a9fa.firebaseio.com",
+    "project_id": "moodswing-9a9fa",
+    "storage_bucket": "moodswing-9a9fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504373766341:android:41166c1c5e8c6175",
+        "android_client_info": {
+          "package_name": "com.example.moodswings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504373766341-ptbjo7m2ub6ll69c1k5h481jqpnv2s00.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moodswings",
+            "certificate_hash": "fcdf14aa8b40eb2e293b7ad7ad0e0f34ff830a99"
+          }
+        },
+        {
+          "client_id": "504373766341-b073b8o6aft11ot69t1clr2hr0rr9fbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD879STpS7KuE5U4ZXvYR-bufsjoZCG9F8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504373766341-b073b8o6aft11ot69t1clr2hr0rr9fbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
