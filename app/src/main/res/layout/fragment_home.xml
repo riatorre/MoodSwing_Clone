@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:theme="@android:style/Theme.NoTitleBar">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/MoodSwingTitleID"
         android:layout_width="412dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
         android:layout_marginBottom="650dp"
         android:shadowColor="#00FFFFFF"
         android:text="@string/moodswings3"
@@ -22,8 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/view2"
@@ -37,10 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/MoodSwingTitleID" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/TomorrowMoodTextID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -55,7 +54,7 @@
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/MoodPredictionTitleID"
         android:layout_width="376dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
@@ -73,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/TodaysMoodTextID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -84,12 +83,12 @@
         android:textColorHighlight="#F7F4F4"
         android:textSize="24sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintBottom_toTopOf="@+id/TomorrowMoodTextID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/TodayMoodBtnID"
         android:layout_width="60sp"
         android:layout_height="60sp"
         android:layout_centerInParent="true"
@@ -100,10 +99,10 @@
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/MoodPredictionTitleID" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/TomorrowMoodBtnID"
         android:layout_width="60sp"
         android:layout_height="60sp"
         android:layout_centerInParent="true"
@@ -114,10 +113,10 @@
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn" />
+        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/DailyMoodTrackerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
