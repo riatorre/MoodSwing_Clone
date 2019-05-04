@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -94,4 +95,5 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }
