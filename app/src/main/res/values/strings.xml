@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MoodSwings</string>
     <string name="title_home">Home</string>
-    <string name="title_survey">Mood Survey</string>
+    <string name="title_survey">Survey</string>
     <string name="title_camera">Camera</string>
     <string name="title_journal">Journal</string>
     <string name="welcome_to">Welcome To</string>
