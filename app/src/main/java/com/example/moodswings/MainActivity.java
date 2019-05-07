@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -97,6 +98,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(authIntent);
             finish();
         }
+        Button signIn = findViewById(R.id.signOutBtn);
+        signIn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                sign_out();
+            }
+        });
+    }
+
+    public void sign_out(){
+        FirebaseAuth.getInstance().signOut();
+        Intent authIntent = new Intent(this, sign_in.class);
+        authIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(authIntent);
+        finish();
     }
 
 }
