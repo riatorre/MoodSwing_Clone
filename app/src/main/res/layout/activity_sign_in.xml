@@ -106,14 +106,21 @@
 
     <Button
         android:id="@+id/googleSignInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_signin"
+        android:drawableStart="@drawable/ic_google"
+        android:padding="15dp"
         android:text="@string/googleSignInBtn"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.339" />
 
 </android.support.constraint.ConstraintLayout>

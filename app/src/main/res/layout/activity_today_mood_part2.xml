@@ -28,14 +28,16 @@
 
     <Button
         android:id="@+id/Survey2_NextID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:background="@drawable/rounded_button"
         android:radius="3dp"
         android:text="@string/next"
         android:textColor="@android:color/white"
         android:textSize="24sp"
+        android:padding="10dp"
         tools:ignore="MissingConstraints"
+<<<<<<< HEAD
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="553dp" />
 
@@ -212,5 +214,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gymID"
         app:layout_constraintTop_toBottomOf="@+id/badSleepID" />
+=======
+        android:drawableEnd="@drawable/ic_arrow"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="623dp" />
+>>>>>>> c81fb16a37c24c0bc592de8df9a251a5d60d7df3
 
 </android.support.constraint.ConstraintLayout>

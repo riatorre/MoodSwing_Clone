@@ -17,7 +17,7 @@
     <string name="your_mood_predictions">Your Mood Predictions</string>
     <string name="daily_mood_tracker">Daily Mood Tracker</string>
     <string name="moodswings3">MoodSwings</string>
-    <string name="googleSignInBtn">Login with Google</string>
+    <string name="googleSignInBtn">Google Login</string>
     <string name="signOutBtn">Sign Out</string>
     <string name="angry_1">1</string>
     <string name="survey_title_1">How are you feeling?</string>

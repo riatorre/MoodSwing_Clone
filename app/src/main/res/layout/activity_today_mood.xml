@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TodayMoodActivity">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView9"
@@ -26,8 +25,8 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="432dp"
-        android:layout_height="150dp"
+        android:layout_width="418dp"
+        android:layout_height="163dp"
         android:layout_marginBottom="230dp"
         android:background="#524EB4A1"
         app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID"
@@ -57,21 +56,27 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="221dp"
-        android:layout_height="86dp"
         android:layout_marginStart="96dp"
         android:layout_marginTop="450dp"
         android:layout_marginEnd="95dp"
         android:layout_marginBottom="78dp"
-        android:background="#4EB4A1"
-        android:text="@string/next_button"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_button"
+        android:radius="3dp"
+        android:text="Next"
         android:textColor="@android:color/white"
-        android:textStyle="italic"
+        android:textSize="24sp"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints"
+        android:drawableEnd="@drawable/ic_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        app:layout_constraintVertical_bias="0.529" />
 
 
     <Button
