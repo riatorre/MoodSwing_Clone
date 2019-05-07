@@ -27,4 +27,18 @@
     <string name="good_5">5</string>
     <string name="happy_6">6</string>
     <string name="okay_4">4</string>
+    <string name="what_did_you_do_today">What Did You Do Today?</string>
+    <string name="next">Next</string>
+    <string name="school">School</string>
+    <string name="work">work</string>
+    <string name="date">Date</string>
+    <string name="gym">Gym</string>
+    <string name="friend_time">Friend Time</string>
+    <string name="good_food">Good Food</string>
+    <string name="good_sleep">Good Sleep</string>
+    <string name="reading">Reading</string>
+    <string name="bad_food">Bad Food</string>
+    <string name="bad_food">Bad Food</string>
+    <string name="exercise">Exercise</string>
+    <string name="bad_sleep">Bad Sleep</string>
 </resources>

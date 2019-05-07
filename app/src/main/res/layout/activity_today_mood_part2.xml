@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/view3"
@@ -22,11 +20,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What Did You Do Today?"
+        android:text="@string/what_did_you_do_today"
         android:textSize="30sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="50dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="50dp" />
 
     <Button
         android:id="@+id/Survey2_NextID"
@@ -34,11 +32,185 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
         android:radius="3dp"
-        android:text="Next"
+        android:text="@string/next"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="629dp" />
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="553dp" />
+
+    <Button
+        android:id="@+id/schoolID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/school"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/dateID"
+        app:layout_constraintEnd_toStartOf="@+id/workID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <Button
+        android:id="@+id/workID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/work"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/gymID"
+        app:layout_constraintEnd_toStartOf="@+id/badSleepID"
+        app:layout_constraintStart_toEndOf="@+id/schoolID"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <Button
+        android:id="@+id/dateID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/date"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/GoodFoodID"
+        app:layout_constraintEnd_toStartOf="@+id/gymID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schoolID" />
+
+    <Button
+        android:id="@+id/gymID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/gym"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/ReadingID"
+        app:layout_constraintEnd_toStartOf="@+id/exerciseID"
+        app:layout_constraintStart_toEndOf="@+id/dateID"
+        app:layout_constraintTop_toBottomOf="@+id/workID" />
+
+    <Button
+        android:id="@+id/FriendTimeID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="271dp"
+        android:text="@string/friend_time"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/GoodSleepID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GoodFoodID" />
+
+    <Button
+        android:id="@+id/GoodFoodID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/good_food"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/FriendTimeID"
+        app:layout_constraintEnd_toStartOf="@+id/ReadingID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateID" />
+
+    <Button
+        android:id="@+id/GoodSleepID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/good_sleep"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/FriendTimeID"
+        app:layout_constraintTop_toBottomOf="@+id/ReadingID" />
+
+    <Button
+        android:id="@+id/ReadingID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/reading"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/GoodSleepID"
+        app:layout_constraintEnd_toStartOf="@+id/BadFoodID"
+        app:layout_constraintStart_toEndOf="@+id/GoodFoodID"
+        app:layout_constraintTop_toBottomOf="@+id/gymID" />
+
+    <Button
+        android:id="@+id/BadFoodID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="346dp"
+        android:text="@string/bad_food"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ReadingID"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseID" />
+
+    <Button
+        android:id="@+id/badSleepID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/bad_sleep"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/exerciseID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/workID"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <Button
+        android:id="@+id/exerciseID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/exercise"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/BadFoodID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gymID"
+        app:layout_constraintTop_toBottomOf="@+id/badSleepID" />
 
 </android.support.constraint.ConstraintLayout>
