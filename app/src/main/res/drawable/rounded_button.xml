@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <shape
+        android:stap="rectangle">
+        <corners
+            android:bottomLeftRadius= "25p"
+            android:topLeftRadius= "25p"
+            android:topRightRadius= "25p"
+            android:bottomRightRadius= "25p"
+            android:radius="13dp"
+            />
+        <solid android:color="#4EB4A1"/>
+    </shape>
+</item>
+
+    <!--To provide hover effect -->
+<item
+    android:state_pressed="true">
+    <shape
+        android:stap="rectangle">
+        <corners
+            android:bottomLeftRadius= "25p"
+            android:topLeftRadius= "25p"
+            android:topRightRadius= "25p"
+            android:bottomRightRadius= "25p"
+            android:radius="13dp" />
+        <solid android:color="#329e88"/>
+    </shape>
+</item>
+</selector>
