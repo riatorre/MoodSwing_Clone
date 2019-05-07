@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+<layer-list xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item tools:ignore="StateListReachable">
+
+
+
+
         <!--
             android:shape
                 Keyword. Defines the type of shape. Valid values are:
@@ -18,4 +22,4 @@
             <size android:width="250dp" android:height="250dp"/>
         </shape>
     </item>
-</selector>
+</layer-list>
