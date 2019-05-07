@@ -37,7 +37,6 @@
         android:textSize="24sp"
         android:padding="10dp"
         tools:ignore="MissingConstraints"
-<<<<<<< HEAD
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="553dp" />
 
