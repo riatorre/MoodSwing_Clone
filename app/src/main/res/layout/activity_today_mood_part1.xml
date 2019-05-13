@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".TodayMoodPart1">
 
     <TextView
         android:id="@+id/textView9"
@@ -250,4 +251,5 @@
         app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todayMoodBtnID3" />
+
 </android.support.constraint.ConstraintLayout>
