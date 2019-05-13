@@ -90,14 +90,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser == null){
-            Log.d("AUTHENTICATION","User not Authenticated");
-            Intent authIntent = new Intent(this, sign_in.class);
-            authIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(authIntent);
-            finish();
-        }
         Button signIn = findViewById(R.id.signOutBtn);
         signIn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -109,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sign_out(){
         FirebaseAuth.getInstance().signOut();
-        Intent authIntent = new Intent(this, sign_in.class);
-        authIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent authIntent = new Intent(this, LoginActivity.class);
         startActivity(authIntent);
         finish();
     }
