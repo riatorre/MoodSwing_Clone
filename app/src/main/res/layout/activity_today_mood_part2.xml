@@ -5,53 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TodayMoodPart2">
-    
-        <View
-            android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:background="#8B4EB4A1"
-            android:backgroundTint="#4EB4A1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/diary_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/what_did_you_do_today"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#524EB4A1"
+            android:gravity="center"
+            android:text="@string/survey_title_2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="@+id/view3"
-            app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintStart_toStartOf="@+id/view3"
-            app:layout_constraintTop_toTopOf="@+id/view3"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/Survey2_NextID"
             android:layout_width="150dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="75dp"
             android:background="@drawable/rounded_button"
             android:drawableEnd="@drawable/ic_arrow"
             android:onClick="onClickNextPart2"
             android:padding="10dp"
             android:radius="3dp"
-            android:text="Next"
+            android:text="@string/next"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3"
-            app:layout_constraintVertical_bias="0.902" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/schoolID"
@@ -68,7 +53,7 @@
             app:layout_constraintBottom_toTopOf="@+id/gymID"
             app:layout_constraintEnd_toStartOf="@+id/dateID"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
         <Button
             android:id="@+id/workID"
@@ -102,7 +87,7 @@
             app:layout_constraintBottom_toTopOf="@+id/ReadingID"
             app:layout_constraintEnd_toStartOf="@+id/GoodSleepID"
             app:layout_constraintStart_toEndOf="@+id/schoolID"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
         <Button
             android:id="@+id/gymID"
@@ -170,7 +155,7 @@
             app:layout_constraintBottom_toTopOf="@+id/exerciseID"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dateID"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
         <Button
             android:id="@+id/ReadingID"

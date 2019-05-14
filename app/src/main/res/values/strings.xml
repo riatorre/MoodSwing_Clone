@@ -6,7 +6,6 @@
     <string name="title_journal">Journal</string>
     <string name="welcome_to">Welcome To</string>
     <string name="sign_in">Sign-In</string>
-    <string name="moodswings">MoodSwings</string>
     <string name="a_mood_monitoring_app">A Mood Monitoring App</string>
     <string name="todo">TODO</string>
     <string name="home_fragment">Home Fragment</string>
@@ -21,13 +20,15 @@
     <string name="signOutBtn">Sign Out</string>
     <string name="angry_1">1</string>
     <string name="survey_title_1">How are you feeling?</string>
+    <string name="survey_title_2">What Did You Do Today?</string>
+    <string name="survey_title_3">Diary Entry</string>
     <string name="sad_3">3</string>
     <string name="misery_2">2</string>
     <string name="good_5">5</string>
     <string name="happy_6">6</string>
     <string name="okay_4">4</string>
-    <string name="what_did_you_do_today">What Did You Do Today?</string>
     <string name="next">Next</string>
+    <string name="done">Done</string>
     <string name="school">School</string>
     <string name="work">work</string>
     <string name="date">Date</string>
