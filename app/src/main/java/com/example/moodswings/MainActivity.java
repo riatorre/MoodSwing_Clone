@@ -48,24 +48,4 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
-    @Override
-    public void onStart(){
-        super.onStart();
-        Button signIn = findViewById(R.id.signOutBtn);
-        signIn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                sign_out();
-            }
-        });
-    }
-
-    public void sign_out(){
-        FirebaseAuth.getInstance().signOut();
-        Intent authIntent = new Intent(this, LoginActivity.class);
-        startActivity(authIntent);
-        finish();
-    }
-
 }

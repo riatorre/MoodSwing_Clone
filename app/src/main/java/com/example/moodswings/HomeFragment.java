@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
@@ -37,6 +38,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button signIn = view.findViewById(R.id.signOutBtn);
+        signIn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                sign_out();
+            }
+        });
 
         GraphView moodGraph = (GraphView) view.findViewById(R.id.moodgraph);
         series = new LineGraphSeries<>();
@@ -89,6 +98,12 @@ public class HomeFragment extends Fragment {
 
     }
 
+    private void sign_out(){
+        FirebaseAuth.getInstance().signOut();
+        Intent authIntent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(authIntent);
+        getActivity().finish();
+    }
 }
 
 
