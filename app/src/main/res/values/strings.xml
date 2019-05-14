@@ -39,4 +39,5 @@
     <string name="bad_food">Bad Food</string>
     <string name="exercise">Exercise</string>
     <string name="bad_sleep">Bad Sleep</string>
+    <string name="start_your_diary_entry_here">Start your diary entry here...</string>
 </resources>

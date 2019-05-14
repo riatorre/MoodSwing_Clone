@@ -5,36 +5,33 @@
     android:id="@+id/linearLayoutCompat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4eb4a1"
+    android:background="@android:color/white"
     android:orientation="vertical"
     android:theme="@android:style/Theme.NoTitleBar">
 
 
     <TextView
         android:id="@+id/daily_survey_ID"
-        android:layout_marginTop="250dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take the daily surve"
-        android:textSize="30sp"
+        android:layout_marginTop="250dp"
+        android:text="Take the daily survey"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textColor="#4EB4A1"
+        android:textSize="40sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_OK_button_ID"
         app:layout_constraintEnd_toStartOf="@+id/fragment_OK_button_ID" />
 
     <Button
         android:id="@+id/fragment_OK_button_ID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Yes" />
-
-    <Button
-        android:id="@+id/button_cancel_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        />
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:text="OK"
+        android:textColor="@android:color/white" />
 
 
 </android.support.v7.widget.LinearLayoutCompat>

@@ -19,20 +19,11 @@ public class dashboardFragment extends Fragment {
 
        View view = inflater.inflate(R.layout.fragment_dashboard,container,false);
         Button OkButton = (Button) view.findViewById(R.id.fragment_OK_button_ID);
-        Button cancelButton = (Button) view.findViewById(R.id.button_cancel_ID);
 
         OkButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent goTOActivity = new Intent(getActivity(),TodayMoodPart1.class);
-                startActivity(goTOActivity);
-            }
-        });
-
-        cancelButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent goTOActivity = new Intent(getActivity(),MainActivity.class);
                 startActivity(goTOActivity);
             }
         });
