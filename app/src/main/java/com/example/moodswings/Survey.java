@@ -6,20 +6,20 @@ import java.util.Locale;
 public class Survey {
     private Integer moodEnum;
     private String diaryEntry;
-    private byte[] activities;
+    private Integer activities;
     private String diaryDate;
 
     // Constructors
     public Survey(){
         this.updateDiaryDate();
     }
-    public Survey(Integer moodEnum, String diaryEntry, byte[] activities){
+    public Survey(Integer moodEnum, String diaryEntry, Integer activities){
         this.moodEnum = moodEnum;
         this.diaryEntry = diaryEntry;
         this.activities = activities;
         this.updateDiaryDate();
     }
-    public Survey(Integer moodEnum, String diaryEntry, byte[] activities, String diaryDate){
+    public Survey(Integer moodEnum, String diaryEntry, Integer activities, String diaryDate){
         this.moodEnum = moodEnum;
         this.diaryEntry = diaryEntry;
         this.activities = activities;
@@ -33,7 +33,7 @@ public class Survey {
     public String getDiaryEntry(){
         return diaryEntry;
     }
-    public byte[] getActivities(){
+    public Integer getActivities(){
         return activities;
     }
     public String getDiaryDate(){
@@ -49,14 +49,14 @@ public class Survey {
         diaryEntry = newEntry;
         this.updateDiaryDate();
     }
-    public void setActivities(byte[] newActivities){
+    public void setActivities(Integer newActivities){
         activities = newActivities;
         this.updateDiaryDate();
     }
     private void updateDiaryDate(){
         diaryDate = this.getTodaysDate();
     }
-    public void updateSurvey(Integer newMood, String newEntry, byte[] newActivities){
+    public void updateSurvey(Integer newMood, String newEntry, Integer newActivities){
         moodEnum = newMood;
         diaryEntry = newEntry;
         activities = newActivities;

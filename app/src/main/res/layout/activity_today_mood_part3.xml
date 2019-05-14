@@ -6,69 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".TodayMoodPart3">
 
-    <View
-        android:id="@+id/view3"
+    <TextView
+        android:id="@+id/diary_title"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:background="#8C4EB4A1"
-        android:backgroundTint="#4EB4A1"
+        android:layout_height="160dp"
+        android:background="#524EB4A1"
+        android:gravity="center"
+        android:text="@string/survey_title_3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/diary_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Diary Entry"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/diaryentry"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/start_your_diary_entry_here"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="480dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/rounded_button"
         android:onClick="onClickDone"
         android:padding="10dp"
         android:radius="3dp"
-        android:text="Done"
+        android:text="@string/done"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-
-
-    <EditText
-        android:id="@+id/diaryentry"
-        android:layout_width="379dp"
-        android:layout_height="362dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:gravity="top"
-        android:hint="Start writing your diary entry here..."
-        android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

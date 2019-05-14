@@ -5,11 +5,12 @@
  *  Utilizes Firebase FireStore.
  *
  *  Survey CRUD
- *  C - addSurvey(String date)
- *  R - getSurvey(String date), getTodaysSurvey(), getSurveys()
- *  U - addSurvey(String date)
+ *  C - addSurvey(Survey S)
+ *  R - getSurvey(String dateKey), getTodaysSurvey(), getSurveys()
+ *  U - addSurvey(Survey S)
  *  D - NULL
- *      Where date = DD/MM/YYYY
+ *      Where S = new Survey()
+ *            dateKey = MM_DD_YYYY
  *  getSurvey() && getTodaysSurvey() returns result to this.surveyResult; will be null if it can't
  *      find one.
  *  getSurveys() returns result to this.surveyResults; will be null if none are found, returns an
@@ -41,7 +42,10 @@ public class DBAdapter {
     private String uid = user.getUid();
     private FirebaseFirestore db;
     private Context mContext;
+
     private String TAG = "Firebase_FireStore";
+    private String surveyStorePath = "surveys/users/"+uid;
+
     private Survey surveyResult;
     private ArrayList<Survey> surveyResults;
     public DBAdapter(Context mContext){
@@ -50,7 +54,7 @@ public class DBAdapter {
     }
 
     public void addSurvey(Survey survey){
-        db.collection("surveys/" + uid).document(survey.getDiaryDate()).set(survey).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection(surveyStorePath).document(survey.getDiaryDate().replace("/","_")).set(survey).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Message.message( mContext, "Today's Survey successfully stored");
@@ -65,7 +69,7 @@ public class DBAdapter {
         });
     }
     public void getSurvey(String date){
-        db.collection("surveys/" + uid).document(date).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection(surveyStorePath).document(date).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 surveyResult = null;
@@ -88,7 +92,7 @@ public class DBAdapter {
         this.getSurvey(surveyResult.getTodaysDate());
     }
     public void getSurveys(){
-        db.collection("surveys/" + uid).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection(surveyStorePath).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 surveyResults = null;
