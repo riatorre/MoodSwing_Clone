@@ -1,23 +1,22 @@
 package com.example.moodswings;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class Survey {
     private Integer moodEnum;
     private String diaryEntry;
     private byte[] activities;
-    private Date diaryDate;
+    private String diaryDate;
 
     // Constructors
     public Survey(){
-        this.diaryDate = Calendar.getInstance().getTime();
+        this.updateDiaryDate();
     }
     public Survey(Integer moodEnum, String diaryEntry, byte[] activities){
         this.moodEnum = moodEnum;
         this.diaryEntry = diaryEntry;
         this.activities = activities;
-        this.diaryDate = Calendar.getInstance().getTime();
+        this.updateDiaryDate();
     }
 
     // Access Functions
@@ -30,7 +29,7 @@ public class Survey {
     public byte[] getActivities(){
         return activities;
     }
-    public Date getDiaryDate(){
+    public String getDiaryDate(){
         return diaryDate;
     }
 
@@ -48,12 +47,17 @@ public class Survey {
         this.updateDiaryDate();
     }
     private void updateDiaryDate(){
-        diaryDate = Calendar.getInstance().getTime();
+        diaryDate = this.getTodaysDate();
     }
     public void updateSurvey(Integer newMood, String newEntry, byte[] newActivities){
         moodEnum = newMood;
         diaryEntry = newEntry;
         activities = newActivities;
         this.updateDiaryDate();
+    }
+    public String getTodaysDate(){
+        return Calendar.getInstance().get(Calendar.DATE) + "/"
+                + (Calendar.getInstance().get(Calendar.MONTH)+1) + "/"
+                + Calendar.getInstance().get(Calendar.YEAR);
     }
 }
