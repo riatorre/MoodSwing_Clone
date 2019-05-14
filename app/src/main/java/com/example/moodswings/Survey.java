@@ -1,6 +1,7 @@
 package com.example.moodswings;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Survey {
     private Integer moodEnum;
@@ -62,7 +63,8 @@ public class Survey {
         this.updateDiaryDate();
     }
     public String getTodaysDate(){
-        return Calendar.getInstance().get(Calendar.DATE) + "/"
+        return Calendar.getInstance().getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                ", " + Calendar.getInstance().get(Calendar.DATE) + "/"
                 + (Calendar.getInstance().get(Calendar.MONTH)+1) + "/"
                 + Calendar.getInstance().get(Calendar.YEAR);
     }

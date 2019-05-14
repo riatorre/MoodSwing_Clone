@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView7" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/diary_title"
                 android:layout_width="34dp"
                 android:layout_height="37dp"
                 android:gravity="center"
@@ -185,7 +185,7 @@
                 android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/todayMoodBtnID"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID3"
