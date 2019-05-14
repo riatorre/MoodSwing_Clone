@@ -15,6 +15,7 @@ public class TodayMoodPart3 extends AppCompatActivity {
 
     public void onClickDone(View view) {
         Intent goToSurveypart2 = new Intent(getApplicationContext(),MainActivity.class);
+        goToSurveypart2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(goToSurveypart2);
     }
 }
