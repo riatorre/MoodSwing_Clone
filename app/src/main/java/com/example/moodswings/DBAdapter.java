@@ -44,7 +44,7 @@ public class DBAdapter {
     private Context mContext;
 
     private String TAG = "Firebase_FireStore";
-    private String surveyStorePath = "surveys_users_"+uid;
+    private String surveyStorePath = "surveys/users/"+uid;
 
     private Survey surveyResult;
     private ArrayList<Survey> surveyResults;
