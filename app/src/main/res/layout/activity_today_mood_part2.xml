@@ -6,242 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".TodayMoodPart2">
 
-        <TextView
-            android:id="@+id/diary_title"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:background="#524EB4A1"
-            android:gravity="center"
-            android:text="@string/survey_title_2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/white"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/diary_title"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#524EB4A1"
+        android:gravity="center"
+        android:text="@string/survey_title_2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/Survey2_NextID"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="75dp"
-            android:background="@drawable/rounded_button"
-            android:drawableEnd="@drawable/ic_arrow"
-            android:onClick="onClickNextPart2"
-            android:padding="10dp"
-            android:radius="3dp"
-            android:text="@string/next"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/Survey2_NextID"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/rounded_button"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:onClick="onClickNextPart2"
+        android:padding="10dp"
+        android:radius="3dp"
+        android:text="@string/next"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/Survey2_NextID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_title">
+
 
         <Button
             android:id="@+id/schoolID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/school"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/gymID"
-            app:layout_constraintEnd_toStartOf="@+id/dateID"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+            app:layout_constraintBottom_toTopOf="@+id/GoodFoodID"
+            app:layout_constraintEnd_toEndOf="@+id/GoodFoodID"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/workID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/work"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/badSleepID"
-            app:layout_constraintEnd_toStartOf="@+id/FriendTimeID"
-            app:layout_constraintStart_toEndOf="@+id/GoodFoodID"
-            app:layout_constraintTop_toBottomOf="@+id/ReadingID" />
+            app:layout_constraintBottom_toTopOf="@+id/dateID"
+            app:layout_constraintStart_toStartOf="@+id/dateID"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/dateID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/date"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/ReadingID"
-            app:layout_constraintEnd_toStartOf="@+id/GoodSleepID"
-            app:layout_constraintStart_toEndOf="@+id/schoolID"
-            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+            app:layout_constraintBottom_toTopOf="@+id/hiking"
+            app:layout_constraintStart_toStartOf="@+id/hiking"
+            app:layout_constraintTop_toBottomOf="@+id/workID" />
 
         <Button
             android:id="@+id/gymID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/gym"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/GoodFoodID"
-            app:layout_constraintEnd_toStartOf="@+id/ReadingID"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/schoolID" />
+            app:layout_constraintBottom_toTopOf="@+id/FriendTimeID"
+            app:layout_constraintEnd_toStartOf="@+id/schoolID"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/workID"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/FriendTimeID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/friend_time"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/hiking"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/workID"
-            app:layout_constraintTop_toBottomOf="@+id/exerciseID" />
+            app:layout_constraintBottom_toTopOf="@+id/exerciseID"
+            app:layout_constraintEnd_toStartOf="@+id/GoodFoodID"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/dateID"
+            app:layout_constraintTop_toBottomOf="@+id/gymID" />
 
         <Button
             android:id="@+id/GoodFoodID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/good_food"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/BadFoodID"
-            app:layout_constraintEnd_toStartOf="@+id/workID"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gymID" />
+            app:layout_constraintBottom_toTopOf="@+id/badSleepID"
+            app:layout_constraintEnd_toEndOf="@+id/badSleepID"
+            app:layout_constraintTop_toBottomOf="@+id/schoolID" />
 
         <Button
             android:id="@+id/GoodSleepID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/good_sleep"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/exerciseID"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dateID"
-            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ReadingID"
+            app:layout_constraintTop_toBottomOf="@+id/badSleepID" />
 
         <Button
             android:id="@+id/ReadingID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/reading"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/workID"
-            app:layout_constraintEnd_toStartOf="@+id/exerciseID"
-            app:layout_constraintStart_toEndOf="@+id/gymID"
-            app:layout_constraintTop_toBottomOf="@+id/dateID" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/GoodSleepID"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/BadFoodID"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseID" />
 
         <Button
             android:id="@+id/BadFoodID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="274dp"
             android:background="@drawable/rounded_button"
             android:text="@string/bad_food"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/badSleepID"
+            app:layout_constraintEnd_toStartOf="@+id/ReadingID"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/GoodFoodID" />
+            app:layout_constraintTop_toBottomOf="@+id/hiking" />
 
         <Button
             android:id="@+id/badSleepID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="159dp"
-            android:layout_marginBottom="274dp"
             android:background="@drawable/rounded_button"
             android:text="@string/bad_sleep"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/BadFoodID"
-            app:layout_constraintTop_toBottomOf="@+id/workID" />
+            app:layout_constraintBottom_toTopOf="@+id/GoodSleepID"
+            app:layout_constraintEnd_toEndOf="@+id/GoodSleepID"
+            app:layout_constraintTop_toBottomOf="@+id/GoodFoodID" />
 
         <Button
             android:id="@+id/hiking"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="274dp"
             android:background="@drawable/rounded_button"
             android:text="Hiking"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.799"
-            app:layout_constraintStart_toEndOf="@+id/badSleepID"
-            app:layout_constraintTop_toBottomOf="@+id/FriendTimeID"
-            app:layout_constraintVertical_bias="0.135" />
+            app:layout_constraintBottom_toTopOf="@+id/BadFoodID"
+            app:layout_constraintStart_toStartOf="@+id/BadFoodID"
+            app:layout_constraintTop_toBottomOf="@+id/dateID" />
 
         <Button
             android:id="@+id/exerciseID"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/exercise"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/FriendTimeID"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ReadingID"
-            app:layout_constraintTop_toBottomOf="@+id/GoodSleepID" />
+            app:layout_constraintBottom_toTopOf="@+id/ReadingID"
+            app:layout_constraintEnd_toStartOf="@+id/badSleepID"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hiking"
+            app:layout_constraintTop_toBottomOf="@+id/FriendTimeID" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
