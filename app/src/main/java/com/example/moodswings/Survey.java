@@ -18,6 +18,12 @@ public class Survey {
         this.activities = activities;
         this.updateDiaryDate();
     }
+    public Survey(Integer moodEnum, String diaryEntry, byte[] activities, String diaryDate){
+        this.moodEnum = moodEnum;
+        this.diaryEntry = diaryEntry;
+        this.activities = activities;
+        this.diaryDate = diaryDate;
+    }
 
     // Access Functions
     public Integer getMood(){
