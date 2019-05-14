@@ -30,7 +30,7 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="305dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="296dp"
         android:background="#8B4EB4A1"
         android:backgroundTint="#4EB4A1"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="236dp"
         android:text="@string/daily_mood_tracker"
@@ -139,16 +139,27 @@
 
     <Button
         android:id="@+id/signOutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="340dp"
+        android:layout_marginBottom="600dp"
         android:text="@string/signOutBtn"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/MoodSwingTitleID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/moodgraph"
+        android:layout_width="347dp"
+        android:layout_height="171dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DailyMoodTrackerID"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
