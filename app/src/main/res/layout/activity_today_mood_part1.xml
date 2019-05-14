@@ -42,8 +42,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#4EB4A1"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/todayMoodBtnID3"
-                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID3"
+                app:layout_constraintEnd_toEndOf="@+id/todayMoodBtnID1"
+                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID1"
                 app:layout_constraintTop_toTopOf="@+id/textView7" />
 
             <TextView
@@ -188,7 +188,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
             <RadioButton
-                android:id="@+id/todayMoodBtnID3"
+                android:id="@+id/todayMoodBtnID1"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

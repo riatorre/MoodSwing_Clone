@@ -11,6 +11,8 @@ public class TodayMoodPart2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_mood_part2);
+        Survey survey = (Survey) getIntent().getSerializableExtra("survey");
+        survey.setActivities(2);
     }
 
     public void onClickNextPart2(View view) {
