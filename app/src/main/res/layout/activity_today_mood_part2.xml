@@ -29,20 +29,25 @@
 
         <Button
             android:id="@+id/Survey2_NextID"
-            android:layout_width="237dp"
-            android:layout_height="104dp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="492dp"
+            android:layout_marginEnd="131dp"
+            android:layout_marginBottom="54dp"
             android:background="@drawable/rounded_button"
-            android:padding="15dp"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
+            android:drawableEnd="@drawable/ic_arrow"
+            android:onClick="onClickNextPart2"
+            android:padding="10dp"
             android:radius="3dp"
-            android:text="@string/next"
+            android:text="Next"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/white"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="87dp"
-            tools:layout_editor_absoluteY="570dp" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         <Button
             android:id="@+id/schoolID"
