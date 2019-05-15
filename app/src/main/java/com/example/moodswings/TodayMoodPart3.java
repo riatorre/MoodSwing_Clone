@@ -23,8 +23,9 @@ public class TodayMoodPart3 extends AppCompatActivity {
         survey.setDiaryEntry(value);
 
         //Set title entry
-        Survey survey = new Survey();
+        //Survey survey = new Survey();
         String title = survey.getDiaryDate();
+
         TextView err = (TextView)findViewById(R.id.diary_title);
         err.setText(title);
 
