@@ -17,7 +17,7 @@ public class TodayMoodPart3 extends AppCompatActivity {
         setContentView(R.layout.activity_today_mood_part3);
 
         //get Survey Data
-        survey = (Survey) getIntent().getSerializableExtra("survey");
+        survey = (Survey) getIntent().getExtras().getParcelable("survey");
         EditText editText = (EditText) findViewById(R.id.diaryentry);
         String value = editText.getText().toString();
         survey.setDiaryEntry(value);

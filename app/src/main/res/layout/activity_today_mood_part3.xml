@@ -30,6 +30,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:gravity="start|top"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:hint="@string/start_your_diary_entry_here"
         android:inputType="textMultiLine"
         android:lines="8"
