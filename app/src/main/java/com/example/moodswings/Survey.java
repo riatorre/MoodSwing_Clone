@@ -7,10 +7,10 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Survey implements Parcelable {
-    private Integer moodEnum;
-    private String diaryEntry;
-    private Integer activities;
-    private String diaryDate;
+    private Integer moodEnum = 0;
+    private String diaryEntry = "";
+    private Integer activities = 0;
+    private String diaryDate = "";
 
     // Constructors
     public Survey(){
