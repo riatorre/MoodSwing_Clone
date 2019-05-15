@@ -18,9 +18,6 @@ public class TodayMoodPart3 extends AppCompatActivity {
 
         //get Survey Data
         survey = (Survey) getIntent().getExtras().getParcelable("survey");
-        EditText editText = (EditText) findViewById(R.id.diaryentry);
-        String value = editText.getText().toString();
-        survey.setDiaryEntry(value);
 
         //Set title entry
         //Survey survey = new Survey();
@@ -32,6 +29,9 @@ public class TodayMoodPart3 extends AppCompatActivity {
     }
 
     public void onClickDone(View view) {
+        EditText editText = (EditText) findViewById(R.id.diaryentry);
+        String value = editText.getText().toString();
+        survey.setDiaryEntry(value);
         db.addSurvey(survey);
         Intent goToSurveypart2 = new Intent(getApplicationContext(),MainActivity.class);
         goToSurveypart2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
