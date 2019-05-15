@@ -1,9 +1,12 @@
 package com.example.moodswings;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Calendar;
 import java.util.Locale;
 
-public class Survey {
+public class Survey implements Parcelable {
     private Integer moodEnum;
     private String diaryEntry;
     private Integer activities;
@@ -25,6 +28,36 @@ public class Survey {
         this.activities = activities;
         this.diaryDate = diaryDate;
     }
+    public Survey(Parcel in){
+        this.moodEnum = in.readInt();
+        this.diaryEntry = in.readString();
+        this.activities = in.readInt();
+        this.diaryDate = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(moodEnum);
+        dest.writeString(diaryEntry);
+        dest.writeInt(activities);
+        dest.writeString(diaryDate);
+    }
+
+    public static final Parcelable.Creator<Survey> CREATOR = new Parcelable.Creator<Survey>() {
+
+        public Survey createFromParcel(Parcel in) {
+            return new Survey(in);
+        }
+
+        public Survey[] newArray(int size) {
+            return new Survey[size];
+        }
+    };
 
     // Access Functions
     public Integer getMood(){
