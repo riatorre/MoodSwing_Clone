@@ -66,7 +66,7 @@ public class TodayMoodPart1 extends AppCompatActivity {
 
     public void onClickSurveypage1(View view) {
         Intent goToSurveypart2 = new Intent(getApplicationContext(), TodayMoodPart2.class);
-        goToSurveypart2.putExtra("survey", (Parcelable) survey);
+        goToSurveypart2.putExtra("survey", survey);
         startActivity(goToSurveypart2);
     }
 
