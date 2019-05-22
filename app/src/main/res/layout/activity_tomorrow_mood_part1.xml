@@ -6,4 +6,209 @@
     android:layout_height="match_parent"
     tools:context=".TomorrowMoodPart1">
 
+    <TextView
+        android:id="@+id/diary_title_Tomorrow_1"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#524EB4A1"
+        android:gravity="center"
+        android:text="@string/survey_title_tomorrow_1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/Done_ID_Tomorrow_1"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="onClickDone_Tomorrow_1"
+        android:padding="10dp"
+        android:radius="3dp"
+        android:text="@string/done"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/Done_ID_Tomorrow_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_title_Tomorrow_1">
+
+
+        <Button
+            android:id="@+id/schoolID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/school"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/GoodFoodID_Tomorrow_1"
+            app:layout_constraintEnd_toEndOf="@+id/GoodFoodID_Tomorrow_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/workID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/work"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/dateID_Tomorrow_1"
+            app:layout_constraintStart_toStartOf="@+id/dateID_Tomorrow_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/dateID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/date"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/hiking_Tomorrow_1"
+            app:layout_constraintStart_toStartOf="@+id/hiking_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/workID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/gymID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/gym"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/FriendTimeID_Tomorrow_1"
+            app:layout_constraintEnd_toStartOf="@+id/schoolID_Tomorrow_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/workID_Tomorrow_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/FriendTimeID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/friend_time"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/exerciseID_Tomorrow_1"
+            app:layout_constraintEnd_toStartOf="@+id/GoodFoodID_Tomorrow_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/dateID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/gymID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/GoodFoodID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/good_food"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/badSleepID_Tomorrow_1"
+            app:layout_constraintEnd_toEndOf="@+id/badSleepID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/schoolID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/GoodSleepID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/good_sleep"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ReadingID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/badSleepID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/ReadingID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/reading"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/GoodSleepID_Tomorrow_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/BadFoodID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/BadFoodID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/bad_food"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ReadingID_Tomorrow_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hiking_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/badSleepID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/bad_sleep"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/GoodSleepID_Tomorrow_1"
+            app:layout_constraintEnd_toEndOf="@+id/GoodSleepID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/GoodFoodID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/hiking_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="Hiking"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/BadFoodID_Tomorrow_1"
+            app:layout_constraintStart_toStartOf="@+id/BadFoodID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/dateID_Tomorrow_1" />
+
+        <Button
+            android:id="@+id/exerciseID_Tomorrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/exercise"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ReadingID_Tomorrow_1"
+            app:layout_constraintEnd_toStartOf="@+id/badSleepID_Tomorrow_1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hiking_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/FriendTimeID_Tomorrow_1" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>

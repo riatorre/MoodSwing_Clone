@@ -14,12 +14,12 @@
         android:id="@+id/daily_survey_ID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:text="Take the daily survey"
+        android:layout_marginTop="100dp"
+        android:text="Todays activity Survey"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="#4EB4A1"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold|italic"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_OK_button_ID"
         app:layout_constraintEnd_toStartOf="@+id/fragment_OK_button_ID" />
@@ -30,7 +30,30 @@
         android:layout_height="80dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button"
-        android:text="OK"
+        android:text="Take todays survey"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/Tomorrow_survey_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Tomorrow activity Survey"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textColor="#4EB4A1"
+        android:textSize="35sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_OK_button_ID"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_OK_button_ID" />
+
+    <Button
+        android:id="@+id/fragment_OK_button_ID_Tomorrow_1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:text="Tomorrow plan"
         android:textColor="@android:color/white" />
 
 
