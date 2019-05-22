@@ -39,13 +39,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button signIn = view.findViewById(R.id.signOutBtn);
-        signIn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                sign_out();
-            }
-        });
+        //Button signIn = view.findViewById(R.id.signOutBtn);
+        //signIn.setOnClickListener(new View.OnClickListener(){
+        //    @Override
+        //    public void onClick(View view){
+        //        sign_out();
+        //    }
+        //});
 
         GraphView moodGraph = (GraphView) view.findViewById(R.id.moodgraph);
         series = new LineGraphSeries<>();
