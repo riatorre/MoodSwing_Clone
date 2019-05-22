@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
         moodGraph.getGridLabelRenderer().reloadStyles();
 
 
-        series.setColor(getResources().getColor(R.color.colorPrimary));
+        series.setColor(getResources().getColor(R.color.melloworange));
         // generate Dates
         Calendar calendar = Calendar.getInstance();
         Date d1 = calendar.getTime();
