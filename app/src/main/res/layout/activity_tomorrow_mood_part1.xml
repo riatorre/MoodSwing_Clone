@@ -27,7 +27,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="75dp"
         android:background="@drawable/rounded_button"
-
+        android:onClick="onClickDone_Tomorrow_1"
         android:padding="10dp"
         android:radius="3dp"
         android:text="@string/done"
