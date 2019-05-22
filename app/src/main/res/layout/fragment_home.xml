@@ -143,11 +143,18 @@
                 android:textSize="30sp"
                 android:textStyle="bold|italic" />
 
-            <com.jjoe64.graphview.GraphView
+            <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/moodgraph"
                 android:layout_width="match_parent"
                 android:layout_height="221dp"
-                android:layout_marginBottom="100dp"/>
+                android:layout_marginBottom="100dp">
+            </com.github.mikephil.charting.charts.BarChart>
+
+           <!-- <com.jjoe64.graphview.GraphView
+                android:id="@+id/moodgraph"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:layout_marginBottom="100dp"/>-->
 
         </LinearLayout>
     </ScrollView>
