@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height= "wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday, May 22, 2019"/>
+    <TextView
+        android:id="@+id/Mood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mood: 2"/>
+    <TextView
+        android:id="@+id/surveyEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Survey Entry: TIFU"/>
+
+    <TextView
+        android:id="@+id/Activities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activities: School" />
+</LinearLayout>

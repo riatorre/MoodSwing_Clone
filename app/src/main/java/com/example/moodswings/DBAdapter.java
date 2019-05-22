@@ -47,13 +47,14 @@ public class DBAdapter {
     private String surveyStorePath = "surveys/users/"+uid;
 
     private Survey surveyResult;
-    private ArrayList<Survey> surveyResults;
-    public DBAdapter(Context mContext){
+    private ArrayList<Survey> surveyResults = new ArrayList<Survey>();
+
+    DBAdapter(Context mContext){
         this.mContext = mContext;
         db = FirebaseFirestore.getInstance();
     }
 
-    public void addSurvey(Survey survey){
+    void addSurvey(Survey survey){
         db.collection(surveyStorePath).document(survey.getDiaryDate().replace("/","_")).set(survey).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -69,7 +70,7 @@ public class DBAdapter {
         });
     }
     public void getSurvey(String date){
-        db.collection(surveyStorePath).document(date).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection(surveyStorePath).document(date.replace("/","_")).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 surveyResult = null;
@@ -91,14 +92,15 @@ public class DBAdapter {
     public void getTodaysSurvey(){
         this.getSurvey(surveyResult.getTodaysDate());
     }
-    public void getSurveys(){
+    void getSurveys(){
         db.collection(surveyStorePath).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                surveyResults = null;
+                surveyResults.clear();
                 if (task.isSuccessful()) {
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        surveyResults.add(document.toObject(Survey.class));
+                        Survey temp = document.toObject(Survey.class);
+                        surveyResults.add(temp);
                         Log.d(TAG, document.getId() + " => " + document.getData());
                     }
                 } else {
@@ -107,5 +109,11 @@ public class DBAdapter {
                 }
             }
         });
+    }
+    public Survey getSurveyResult(){
+        return surveyResult;
+    }
+    public ArrayList<Survey> getSurveyResults() {
+        return surveyResults;
     }
 }
