@@ -1,60 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayoutCompat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical"
     android:theme="@android:style/Theme.NoTitleBar">
 
 
-    <TextView
-        android:id="@+id/daily_survey_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Todays activity Survey"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textColor="#4EB4A1"
-        android:textSize="35sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_OK_button_ID"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_OK_button_ID" />
-
     <Button
         android:id="@+id/fragment_OK_button_ID"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rounded_button"
-        android:text="Take todays survey"
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/Tomorrow_survey_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Tomorrow activity Survey"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textColor="#4EB4A1"
-        android:textSize="35sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_OK_button_ID"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_OK_button_ID" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/circle_button_small"
+        android:textSize="30sp"
+        android:text="Take Today's Survey"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_OK_button_ID_Tomorrow_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/fragment_OK_button_ID_Tomorrow_1"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rounded_button"
-        android:text="Tomorrow plan"
-        android:textColor="@android:color/white" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/circle_button"
+        android:textSize="20sp"
+        android:text="Take Tomorrow's Survey"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_OK_button_ID" />
 
 
-</android.support.v7.widget.LinearLayoutCompat>
+</android.support.constraint.ConstraintLayout>
