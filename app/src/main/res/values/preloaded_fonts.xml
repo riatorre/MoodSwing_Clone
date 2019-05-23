@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/antic_didone</item>
+        <item>@font/crushed</item>
+        <item>@font/flamenco_light</item>
+        <item>@font/londrina_shadow</item>
+        <item>@font/megrim</item>
+        <item>@font/pacifico</item>
+        <item>@font/pompiere</item>
+    </array>
+</resources>
