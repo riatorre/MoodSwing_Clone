@@ -23,7 +23,6 @@
                 android:layout_height="90dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/pacifico"
                 android:shadowColor="#00FFFFFF"
                 android:text="@string/moodswings3"
                 android:textAlignment="center"
@@ -31,6 +30,7 @@
                 android:textColor="#4EB4A1"
                 android:textSize="45sp"
                 android:textStyle="bold|italic" />
+            <!--android:fontFamily="@font/pacifico"-->
 
             <android.support.constraint.ConstraintLayout
 
