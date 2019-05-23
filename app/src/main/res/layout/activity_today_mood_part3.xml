@@ -9,8 +9,8 @@
     <TextView
         android:id="@+id/diary_title"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="#524EB4A1"
+        android:layout_height="125dp"
+        android:background="#8C4EB4A1"
         android:gravity="center"
         android:text="@string/survey_title_3"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"

@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/textView5"
-
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:background="#8C4EB4A1"
