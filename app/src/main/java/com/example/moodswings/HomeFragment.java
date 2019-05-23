@@ -1,7 +1,6 @@
 package com.example.moodswings;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,13 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.type.Color;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,6 +33,7 @@ import java.util.Date;
 
 
 public class HomeFragment extends Fragment {
+    BarChart barchart;
 
     private LineGraphSeries<DataPoint> series;
 
@@ -39,6 +47,37 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        barchart = (BarChart) view.findViewById(R.id.moodgraph);
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        barEntries.add(new BarEntry(1f,0));
+        barEntries.add(new BarEntry(5f,1));
+        barEntries.add(new BarEntry(3f,2));
+        barEntries.add(new BarEntry(2f,3));
+        barEntries.add(new BarEntry(6f,4));
+        barEntries.add(new BarEntry(4f,5));
+        barEntries.add(new BarEntry(5f,6));
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("Sunday");
+        labels.add("Monday");
+        labels.add("Tuesday");
+        labels.add("Wednesday");
+        labels.add("Thursday");
+        labels.add("Friday");
+        labels.add("Saturday");
+
+
+        BarData theData = new BarData(labels, barDataSet);
+        barchart.setData(theData);
+        barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        barchart.setTouchEnabled(true);
+        barchart.setDragEnabled(true);
+        barchart.setScaleEnabled(true);
+
+
+
+
         //Button signIn = view.findViewById(R.id.signOutBtn);
         //signIn.setOnClickListener(new View.OnClickListener(){
         //    @Override
@@ -47,7 +86,7 @@ public class HomeFragment extends Fragment {
         //    }
         //});
 
-        GraphView moodGraph = (GraphView) view.findViewById(R.id.moodgraph);
+      /*  GraphView moodGraph = (GraphView) view.findViewById(R.id.moodgraph);
         series = new LineGraphSeries<>();
 
 
@@ -67,7 +106,7 @@ public class HomeFragment extends Fragment {
         moodGraph.getGridLabelRenderer().reloadStyles();
 
 
-        series.setColor(getResources().getColor(R.color.colorPrimary));
+        series.setColor(getResources().getColor(R.color.melloworange));
         // generate Dates
         Calendar calendar = Calendar.getInstance();
         Date d1 = calendar.getTime();
@@ -93,7 +132,7 @@ public class HomeFragment extends Fragment {
         // set manual x bounds to have nice steps
         moodGraph.getViewport().setMinX(d1.getTime());
         moodGraph.getViewport().setMaxX(d3.getTime());
-        moodGraph.getViewport().setXAxisBoundsManual(true);
+        moodGraph.getViewport().setXAxisBoundsManual(true);*/
 
 
     }

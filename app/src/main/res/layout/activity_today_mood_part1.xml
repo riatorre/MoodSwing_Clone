@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/textView5"
-
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:background="#8C4EB4A1"
@@ -41,42 +40,44 @@
                 android:id="@+id/textView9"
                 android:layout_width="34dp"
                 android:layout_height="37dp"
+                android:layout_marginBottom="13dp"
                 android:gravity="center"
                 android:text="@string/angry_1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#4EB4A1"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/todayMoodBtnID1"
                 app:layout_constraintEnd_toEndOf="@+id/todayMoodBtnID1"
-                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID1"
-                app:layout_constraintTop_toTopOf="@+id/textView7" />
+                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID1" />
 
             <TextView
                 android:id="@+id/diary_title"
-                android:layout_width="34dp"
+                android:layout_width="24dp"
                 android:layout_height="37dp"
+                android:layout_marginBottom="13dp"
                 android:gravity="center"
                 android:text="@string/sad_3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#4EB4A1"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/todayMoodBtnID2"
                 app:layout_constraintEnd_toEndOf="@+id/todayMoodBtnID2"
-                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID2"
-                app:layout_constraintTop_toTopOf="@+id/textView7" />
+                app:layout_constraintStart_toStartOf="@+id/todayMoodBtnID2" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="34dp"
                 android:layout_height="37dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginBottom="13dp"
                 android:gravity="center"
                 android:text="@string/misery_2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#4EB4A1"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/todayMoodBtnID"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -109,18 +110,19 @@
                 android:id="@+id/textView10"
                 android:layout_width="34dp"
                 android:layout_height="37dp"
+                android:layout_marginBottom="13dp"
                 android:gravity="center"
                 android:text="@string/okay_4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#4EB4A1"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID"
                 app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID"
                 app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID"
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
 
             <RadioButton
                 android:id="@+id/TodayMoodBtnID"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
@@ -135,7 +137,6 @@
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID4"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
@@ -150,7 +151,6 @@
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID5"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
@@ -165,46 +165,43 @@
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="80dp"
                 android:background="@drawable/circle_misery"
                 android:button="@android:color/transparent"
                 android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID2"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/circle_sad"
                 android:button="@android:color/transparent"
                 android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/todayMoodBtnID"
-                app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RadioButton
                 android:id="@+id/todayMoodBtnID1"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/circle_angry"
                 android:button="@android:color/transparent"
                 android:textColor="#fff"
                 app:layout_constraintEnd_toStartOf="@+id/todayMoodBtnID"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </RadioGroup>
 

@@ -101,4 +101,10 @@ public class Survey implements Parcelable {
                 + (Calendar.getInstance().get(Calendar.MONTH)+1) + "/"
                 + Calendar.getInstance().get(Calendar.YEAR);
     }
+    public String toString(){
+        return "Date: " + diaryDate
+                + ", Mood: " + moodEnum
+                + ", Entry: " + diaryEntry
+                + ", Activities: " + activities;
+    }
 }
