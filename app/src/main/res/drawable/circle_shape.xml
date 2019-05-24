@@ -17,9 +17,9 @@
         -->
         <shape android:shape="oval">
             <solid android:color="#E5E5E5"/>
-            <stroke android:color="#F6AE47" android:width="5dp"/>
+            <stroke android:color="#F6AE47" android:width="2dp"/>
             <!-- Set the same value for both width and height to get a circular shape -->
-            <size android:width="100dp" android:height="250dp"/>
+            <size android:width="2dp" android:height="250dp"/>
         </shape>
     </item>
 </layer-list>
