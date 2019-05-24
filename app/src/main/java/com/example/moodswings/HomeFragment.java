@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -26,10 +27,12 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class HomeFragment extends Fragment {
@@ -47,6 +50,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
+        DBAdapter db = new DBAdapter(this);
+
+        Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);
+        Button tomorrow_button = (Button) view.findViewById(R.id.TodayMoodBtnID_3);
+
         barchart = (BarChart) view.findViewById(R.id.moodgraph);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(1f,0));
@@ -58,17 +68,37 @@ public class HomeFragment extends Fragment {
         barEntries.add(new BarEntry(5f,6));
         BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 
-        ArrayList<String> labels = new ArrayList<>();
-        labels.add("Sunday");
-        labels.add("Monday");
-        labels.add("Tuesday");
-        labels.add("Wednesday");
-        labels.add("Thursday");
-        labels.add("Friday");
-        labels.add("Saturday");
+
+        //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        Survey survey = new Survey();
+        int mood = survey.getMood();
 
 
-        BarData theData = new BarData(labels, barDataSet);
+        if(mood == 0){
+            today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
+            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+        }
+
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_WEEK,-7);
+        ArrayList<String> days = new ArrayList<>();
+        for (int i = 0; i < 7; i++)
+        {
+            String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                    ", " + calendar.get(Calendar.DATE) + "/"
+                    + (calendar.get(Calendar.MONTH)+1) + "/"
+                    + calendar.get(Calendar.YEAR);
+            calendar.add(Calendar.DAY_OF_WEEK, 1);
+
+            String  date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+            days.add(date);
+            db.getSurvey(date5);
+
+        }
+
+
+        BarData theData = new BarData(days, barDataSet);
         barchart.setData(theData);
         barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         barchart.setTouchEnabled(true);
@@ -144,6 +174,3 @@ public class HomeFragment extends Fragment {
         getActivity().finish();
     }
 }
-
-
-

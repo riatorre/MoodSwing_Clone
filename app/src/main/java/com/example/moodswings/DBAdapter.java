@@ -54,6 +54,10 @@ public class DBAdapter {
         db = FirebaseFirestore.getInstance();
     }
 
+    public DBAdapter(HomeFragment homeFragment) {
+        db = FirebaseFirestore.getInstance();
+    }
+
     void addSurvey(Survey survey){
         db.collection(surveyStorePath).document(survey.getDiaryDate().replace("/","_")).set(survey).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
