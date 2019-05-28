@@ -47,8 +47,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         DBAdapter db = new DBAdapter(getActivity());
 
         final Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +28,7 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.fragment_notification,container,false);
         retrieveSurveys = db.getSurveys();
         retrieveSurveys.addOnCompleteListener(getActivity(),
                 new OnCompleteListener<QuerySnapshot>() {
@@ -43,6 +45,11 @@ public class NotificationFragment extends Fragment {
                                 mySurveys.add(temp);
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                             }
+                            if(mySurveys != null) {
+                                SurveyAdapter surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
+                                ListView surveysList = view.findViewById(R.id.surveysList);
+                                surveysList.setAdapter(surveyAdapter);
+                            }
                         } else {
                             Message.message(getActivity(),
                                     "Unable to retrieve your Surveys");
@@ -51,6 +58,6 @@ public class NotificationFragment extends Fragment {
                         Log.d(TAG,mySurveys.toString());
                     }
                 });
-        return inflater.inflate(R.layout.fragment_notification,container,false);
+        return view;
     }
 }
