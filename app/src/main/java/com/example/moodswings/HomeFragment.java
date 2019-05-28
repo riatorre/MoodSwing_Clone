@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,13 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -28,7 +35,8 @@ public class HomeFragment extends Fragment {
     BarChart barchart;
 
     private LineGraphSeries<DataPoint> series;
-
+    private Task<DocumentSnapshot> retrieveSurvey;
+    Survey survey = new Survey();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,8 +51,8 @@ public class HomeFragment extends Fragment {
 
         DBAdapter db = new DBAdapter(getActivity());
 
-        Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);
-        Button tomorrow_button = (Button) view.findViewById(R.id.TodayMoodBtnID_3);
+        final Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);
+        final Button tomorrow_button = (Button) view.findViewById(R.id.TodayMoodBtnID_3);
 
         barchart = (BarChart) view.findViewById(R.id.moodgraph);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
@@ -59,15 +67,45 @@ public class HomeFragment extends Fragment {
 
 
         //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-        Survey survey = new Survey();
-        int mood = survey.getMood();
 
 
-        if(mood == 0){
-            today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
-            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
-        }
+        retrieveSurvey = db.getSurvey(survey.getTodaysDate());
+        retrieveSurvey.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot document) {
+                survey = null;
+                if (document.exists()) {
+                    survey = document.toObject(Survey.class);
+                    int mood = survey.getMood();
+                    Log.d("HERE", String.valueOf(survey.getMood()));
+                    if(mood != 0){
+                        if(mood == 1){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                        }
+                        if(mood == 2){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
+                        }
+                        if(mood == 3){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_sad);
+                        }
+                        if(mood == 4){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
+                        }
+                        if(mood == 5){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_happy);
+                        }
+                        if(mood == 6){
+                            today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
+                        }
 
+                        tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                    }
+                    Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+                } else {
+                    Log.d("HERE", "No such document");
+                }
+            }
+        });
 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_WEEK,-7);
