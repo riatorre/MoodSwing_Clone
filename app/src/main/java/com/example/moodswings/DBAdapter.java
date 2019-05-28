@@ -45,7 +45,7 @@ public class DBAdapter {
     private String surveyStorePath = "surveys/users/"+uid;
 
     private Survey surveyResult;
-    private ArrayList<Survey> surveyResults = new ArrayList<Survey>();
+    private ArrayList<Survey> surveyResults = new ArrayList<>();
 
     DBAdapter(Context mContext){
         this.mContext = mContext;

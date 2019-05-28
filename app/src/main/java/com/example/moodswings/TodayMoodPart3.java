@@ -17,19 +17,19 @@ public class TodayMoodPart3 extends AppCompatActivity {
         setContentView(R.layout.activity_today_mood_part3);
 
         //get Survey Data
-        survey = (Survey) getIntent().getExtras().getParcelable("survey");
+        survey = getIntent().getExtras().getParcelable("survey");
 
         //Set title entry
         //Survey survey = new Survey();
         String title = survey.getDiaryDate();
 
-        TextView err = (TextView)findViewById(R.id.diary_title);
+        TextView err = findViewById(R.id.diary_title);
         err.setText(title);
 
     }
 
     public void onClickDone(View view) {
-        EditText editText = (EditText) findViewById(R.id.diaryentry);
+        EditText editText = findViewById(R.id.diaryentry);
         String value = editText.getText().toString();
         survey.setDiaryEntry(value);
         db.addSurvey(survey);

@@ -13,11 +13,8 @@ public class Survey implements Parcelable {
     private String diaryDate = "";
 
     // Constructors
-    public Survey(Integer moodEnum, String diaryEntry, Integer activities, String diaryDate){
-        this.moodEnum = moodEnum;
-        this.diaryEntry = diaryEntry;
-        this.activities = activities;
-        this.diaryDate = diaryDate;
+    public Survey(){
+        this.updateDiaryDate();
     }
     public Survey(Integer moodEnum, String diaryEntry, Integer activities){
         this.moodEnum = moodEnum;
@@ -25,16 +22,18 @@ public class Survey implements Parcelable {
         this.activities = activities;
         this.updateDiaryDate();
     }
+    public Survey(Integer moodEnum, String diaryEntry, Integer activities, String diaryDate){
+        this.moodEnum = moodEnum;
+        this.diaryEntry = diaryEntry;
+        this.activities = activities;
+        this.diaryDate = diaryDate;
+    }
     public Survey(Parcel in){
         this.moodEnum = in.readInt();
         this.diaryEntry = in.readString();
         this.activities = in.readInt();
         this.diaryDate = in.readString();
     }
-    public Survey(){
-        this.updateDiaryDate();
-    }
-
 
     @Override
     public int describeContents() {

@@ -1,6 +1,5 @@
 package com.example.moodswings;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,13 +15,9 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -49,10 +44,10 @@ public class HomeFragment extends Fragment {
 
         DBAdapter db = new DBAdapter(getActivity());
 
-        final Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);
-        final Button tomorrow_button = (Button) view.findViewById(R.id.TodayMoodBtnID_3);
+        final Button today_button = view.findViewById(R.id.TodayMoodBtnID_2);
+        final Button tomorrow_button = view.findViewById(R.id.TodayMoodBtnID_3);
 
-        barchart = (BarChart) view.findViewById(R.id.moodgraph);
+        barchart = view.findViewById(R.id.moodgraph);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(1f,0));
         barEntries.add(new BarEntry(5f,1));
@@ -129,12 +124,5 @@ public class HomeFragment extends Fragment {
         barchart.setTouchEnabled(true);
         barchart.setDragEnabled(true);
         barchart.setScaleEnabled(true);
-    }
-
-    private void sign_out(){
-        FirebaseAuth.getInstance().signOut();
-        Intent authIntent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(authIntent);
-        getActivity().finish();
     }
 }

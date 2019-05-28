@@ -14,13 +14,13 @@ public class TodayMoodPart2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_mood_part2);
-        survey = (Survey) getIntent().getExtras().getParcelable("survey");
+        survey = getIntent().getExtras().getParcelable("survey");
         survey.setActivities(2);
     }
 
     public void onClickNextPart2(View view) {
         Intent goToSurveypart3 = new Intent(getApplicationContext(),TodayMoodPart3.class);
-        goToSurveypart3.putExtra("survey", (Parcelable) survey);
+        goToSurveypart3.putExtra("survey", survey);
         startActivity(goToSurveypart3);
     }
 }
