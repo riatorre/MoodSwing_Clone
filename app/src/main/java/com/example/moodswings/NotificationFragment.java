@@ -35,7 +35,11 @@ public class NotificationFragment extends Fragment {
                         mySurveys.clear();
                         if (task.isSuccessful()) {
                             for(QueryDocumentSnapshot document : task.getResult()){
-                                Survey temp = document.toObject(Survey.class);
+                                String diaryDate = document.getString("diaryDate");
+                                Integer moodEnum = document.getDouble("mood").intValue();
+                                String diaryEntry = document.getString("diaryEntry");
+                                Integer activities = document.getDouble("activities").intValue();
+                                Survey temp = new Survey(moodEnum,diaryEntry,activities,diaryDate);
                                 mySurveys.add(temp);
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                             }
