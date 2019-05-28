@@ -33,8 +33,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-
 public class DBAdapter {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String uid = user.getUid();
@@ -44,8 +42,7 @@ public class DBAdapter {
     private String TAG = "Firebase_FireStore";
     private String surveyStorePath = "surveys/users/"+uid;
 
-    private Survey surveyResult;
-    private ArrayList<Survey> surveyResults = new ArrayList<>();
+    Survey surveyResult;
 
     DBAdapter(Context mContext){
         this.mContext = mContext;
@@ -74,6 +71,8 @@ public class DBAdapter {
         return db.collection(surveyStorePath)
                 .document(date.replace("/","_"))
                 .get()
+
+                //Successful Execution
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot document) {
@@ -85,7 +84,8 @@ public class DBAdapter {
                             Log.d(TAG, "No such document");
                         }
                     }
-                })
+                })/**/
+                //Unsuccessful Execution
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -96,11 +96,5 @@ public class DBAdapter {
     }
     Task<QuerySnapshot> getSurveys(){
         return db.collection(surveyStorePath).get();
-    }
-    public Survey getSurveyResult(){
-        return surveyResult;
-    }
-    public ArrayList<Survey> getSurveyResults(){
-        return surveyResults;
     }
 }
