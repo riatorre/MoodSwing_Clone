@@ -59,65 +59,54 @@ public class DBAdapter {
     }
 
     void addSurvey(Survey survey){
-        db.collection(surveyStorePath).document(survey.getDiaryDate().replace("/","_")).set(survey).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Message.message( mContext, "Today's Survey successfully stored");
-                Log.d(TAG, "DocumentSnapshot successfully written!");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Message.message( mContext, "Failed to store Today's Survey");
-                Log.w(TAG, "Error writing document", e);
-            }
-        });
-    }
-    public void getSurvey(String date){
-        db.collection(surveyStorePath).document(date.replace("/","_")).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                surveyResult = null;
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        surveyResult = document.toObject(Survey.class);
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d(TAG, "No such document");
+        db.collection(surveyStorePath)
+                .document(survey.getDiaryDate().replace("/","_"))
+                .set(survey)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Message.message( mContext, "Today's Survey successfully stored");
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
-                } else {
-                    Message.message(mContext, "Unable to retrieve Survey");
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-    }
-    public void getTodaysSurvey(){
-        this.getSurvey(surveyResult.getTodaysDate());
-    }
-    void getSurveys(){
-        db.collection(surveyStorePath).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                surveyResults.clear();
-                if (task.isSuccessful()) {
-                    for(QueryDocumentSnapshot document : task.getResult()){
-                        Survey temp = document.toObject(Survey.class);
-                        surveyResults.add(temp);
-                        Log.d(TAG, document.getId() + " => " + document.getData());
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Message.message( mContext, "Failed to store Today's Survey");
+                        Log.w(TAG, "Error writing document", e);
                     }
-                } else {
-                    Message.message(mContext, "Unable to retrieve your Surveys");
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+                });
+    }
+    public Task<DocumentSnapshot> getSurvey(String date){
+        return db.collection(surveyStorePath)
+                .document(date.replace("/","_"))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot document) {
+                        surveyResult = null;
+                        if (document.exists()) {
+                            surveyResult = document.toObject(Survey.class);
+                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Message.message(mContext, "Unable to retrieve Survey");
+                        Log.w(TAG, "Error Retrieving Survey: ", e);
+                    }
+                });
+    }
+    Task<QuerySnapshot> getSurveys(){
+        return db.collection(surveyStorePath).get();
     }
     public Survey getSurveyResult(){
         return surveyResult;
     }
-    public ArrayList<Survey> getSurveyResults() {
+    public ArrayList<Survey> getSurveyResults(){
         return surveyResults;
     }
 }
