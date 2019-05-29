@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 //public class SurveyAdapterTomorrow extends ArrayAdapterTomorrow<Survey>  {
 //    public SurveyAdapterTomorrow(Context context, ArrayList<Survey2> surveys) {
-//        super(context, 0, surveys);
+//        super(context, 0, survey);
 //    }
-
+//
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent){
-//        Survey survey2 = getItem(position);
+//        Survey2 survey = getItem(position);
 //        if(convertView == null){
 //            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_elem_survey,parent,false);
 //        }
@@ -28,6 +28,6 @@ import java.util.ArrayList;
 //
 //        return convertView;
 //    }
-
-
+//
+//
 //}
