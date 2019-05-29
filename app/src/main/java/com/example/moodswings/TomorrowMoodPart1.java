@@ -9,7 +9,7 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
 
     private Survey survey_Tomorrow_1;
 
-    private DBAdapter db_Tomorrow_1 = new DBAdapter(this);
+    private DBAdapter2 db_Tomorrow_1 = new DBAdapter2(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

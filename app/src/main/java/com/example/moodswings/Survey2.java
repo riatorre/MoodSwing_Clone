@@ -3,9 +3,6 @@ package com.example.moodswings;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Calendar;
-import java.util.Locale;
-
 public class Survey2 implements Parcelable {
     private Integer activities = 0;
 

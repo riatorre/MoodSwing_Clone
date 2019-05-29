@@ -9,11 +9,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-//public class SurveyAdapterTomorrow<ArrayAdapterTomorrow> extends ArrayAdapterTomorrow<Survey>  {
+//public class SurveyAdapterTomorrow extends ArrayAdapterTomorrow<Survey>  {
 //    public SurveyAdapterTomorrow(Context context, ArrayList<Survey2> surveys) {
 //        super(context, 0, surveys);
 //    }
-//
+
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent){
 //        Survey survey2 = getItem(position);
@@ -28,6 +28,6 @@ import java.util.ArrayList;
 //
 //        return convertView;
 //    }
-//
-//
+
+
 //}
