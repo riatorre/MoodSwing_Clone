@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.EventLogTags;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -47,7 +49,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         final DBAdapter db = new DBAdapter(getActivity());
@@ -70,6 +72,7 @@ public class HomeFragment extends Fragment {
                 survey = null;
                 if (document.exists()) {
                     survey = document.toObject(Survey.class);
+                   // mySurveys.add(survey);
                     int mood = survey.getMood();
                     Log.d("HERE", String.valueOf(survey.getMood()));
                     if(mood != 0){
@@ -95,6 +98,7 @@ public class HomeFragment extends Fragment {
                         tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
                     }
                     Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+
                 } else {
                     Log.d("HERE", "No such document");
                 }
@@ -103,7 +107,6 @@ public class HomeFragment extends Fragment {
         final Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_WEEK,-6);
         final ArrayList<String> days = new ArrayList<>();
-
 
         for (int i = 0; i < 7; i++) {
             final int finalI = i;
@@ -124,10 +127,16 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onSuccess(DocumentSnapshot document) {
                     survey = null;
+                    Survey temp = null;
                     if (document.exists()) {
                         survey = document.toObject(Survey.class);
-                        int mood = survey.getMood();
-
+                        String diaryDate = document.getString("diaryDate");
+                        Integer moodEnum = document.getDouble("mood").intValue();
+                        String diaryEntry = document.getString("diaryEntry");
+                        Integer activities = document.getDouble("activities").intValue();
+                        temp = new Survey(moodEnum,diaryEntry,activities,diaryDate);
+                        int mood = temp.getMood();
+                        mySurveys.add(temp);
                             if (mood == 1) {
                                 barEntries.add(new BarEntry(1f, finalI));
                                 Log.d("I HERE", String.valueOf(finalI));
@@ -160,6 +169,7 @@ public class HomeFragment extends Fragment {
                             BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 
                             barchart.invalidate();
+                            barchart.setDescription(null);
                             BarData theData = new BarData(days, barDataSet);
                             barchart.setData(theData);
                             barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
@@ -167,9 +177,16 @@ public class HomeFragment extends Fragment {
                             barchart.setDragEnabled(true);
                             barchart.setScaleEnabled(true);
                             Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+
+                            SurveyAdapter surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
+                            Log.d("MYSURVEY", String.valueOf(mySurveys));
+                            ListView surveysList = view.findViewById(R.id.list_home);
+                            surveysList.setAdapter(surveyAdapter);
+
                         } else {
                             Log.d("HERE", "No such document");
                         }
+
                     }
 
             });
