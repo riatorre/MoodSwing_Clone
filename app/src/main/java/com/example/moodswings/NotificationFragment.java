@@ -20,8 +20,7 @@ import java.util.ArrayList;
 
 public class NotificationFragment extends Fragment {
     private DBAdapter db = new DBAdapter(getActivity());
-    private Task<QuerySnapshot> retrieveSurveys;
-    private ArrayList<Survey> mySurveys = new ArrayList<Survey>();
+    private ArrayList<Survey> mySurveys = new ArrayList<>();
     private String TAG = "NotificationFragment";
     @Nullable
     @Override
@@ -29,7 +28,7 @@ public class NotificationFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_notification,container,false);
-        retrieveSurveys = db.getSurveys();
+        Task<QuerySnapshot> retrieveSurveys = db.getSurveys();
         retrieveSurveys.addOnCompleteListener(getActivity(),
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override

@@ -181,7 +181,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
+                android:layout_marginStart="70dp"
                 android:text="@string/daily_mood_tracker"
                 android:textColor="#4EB4A1"
                 android:textSize="30sp"
