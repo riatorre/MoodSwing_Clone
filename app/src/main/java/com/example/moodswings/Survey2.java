@@ -9,13 +9,10 @@ import java.util.Locale;
 public class Survey2 implements Parcelable {
     private Integer activities = 0;
 
-    public Survey2(Integer moodEnum, String diaryEntry, Integer activities){
+    public Survey2(Integer activities){
         this.activities = activities;
     }
 
-    public Survey2(Integer moodEnum, String diaryEntry, Integer activities, String diaryDate){
-        this.activities = activities;
-    }
     public Survey2(Parcel in){
         this.activities = in.readInt();
     }
@@ -49,7 +46,7 @@ public class Survey2 implements Parcelable {
         activities = newActivities;
     }
 
-    public void updateSurvey(Integer newMood, String newEntry, Integer newActivities){
+    public void updateSurvey(Integer newActivities){
         activities = newActivities;
     }
 
