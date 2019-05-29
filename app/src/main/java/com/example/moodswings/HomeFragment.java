@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -33,7 +34,9 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     BarChart barchart;
-
+    private Task<QuerySnapshot> retrieveSurveys;
+    private ArrayList<Survey> mySurveys = new ArrayList<Survey>();
+    private String TAG = "HomeFragment";
     private LineGraphSeries<DataPoint> series;
     private Task<DocumentSnapshot> retrieveSurvey;
     Survey survey = new Survey();
@@ -47,21 +50,14 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DBAdapter db = new DBAdapter(getActivity());
+        final DBAdapter db = new DBAdapter(getActivity());
 
         final Button today_button = (Button) view.findViewById(R.id.TodayMoodBtnID_2);
         final Button tomorrow_button = (Button) view.findViewById(R.id.TodayMoodBtnID_3);
 
         barchart = (BarChart) view.findViewById(R.id.moodgraph);
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(1f,0));
-        barEntries.add(new BarEntry(5f,1));
-        barEntries.add(new BarEntry(3f,2));
-        barEntries.add(new BarEntry(2f,3));
-        barEntries.add(new BarEntry(6f,4));
-        barEntries.add(new BarEntry(4f,5));
-        barEntries.add(new BarEntry(5f,6));
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+        final ArrayList<BarEntry> barEntries = new ArrayList<>();
+
 
 
         //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
@@ -90,7 +86,7 @@ public class HomeFragment extends Fragment {
                             today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
                         }
                         if(mood == 5){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_happy);
+                            today_button.setBackgroundResource(R.drawable.circle_good);
                         }
                         if(mood == 6){
                             today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
@@ -104,31 +100,82 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+        final Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_WEEK,-6);
+        final ArrayList<String> days = new ArrayList<>();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_WEEK,-7);
-        ArrayList<String> days = new ArrayList<>();
-        for (int i = 0; i < 7; i++)
-        {
+
+        for (int i = 0; i < 7; i++) {
+            final int finalI = i;
+            String date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
             String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
                     ", " + calendar.get(Calendar.DATE) + "/"
-                    + (calendar.get(Calendar.MONTH)+1) + "/"
+                    + (calendar.get(Calendar.MONTH) + 1) + "/"
                     + calendar.get(Calendar.YEAR);
+            Log.d("DATE", date5);
             calendar.add(Calendar.DAY_OF_WEEK, 1);
 
-            String  date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+
             days.add(date);
-            db.getSurvey(date5);
+
+            retrieveSurvey = db.getSurvey(date5);
+
+            retrieveSurvey.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot document) {
+                    survey = null;
+                    if (document.exists()) {
+                        survey = document.toObject(Survey.class);
+                        int mood = survey.getMood();
+
+                            if (mood == 1) {
+                                barEntries.add(new BarEntry(1f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 2) {
+                                barEntries.add(new BarEntry(2f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 3) {
+                                barEntries.add(new BarEntry(3f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 4) {
+                                barEntries.add(new BarEntry(4f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 5) {
+                                barEntries.add(new BarEntry(5f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 6) {
+                                barEntries.add(new BarEntry(6f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            if (mood == 0) {
+                                barEntries.add(new BarEntry(0f, finalI));
+                                Log.d("I HERE", String.valueOf(finalI));
+                            }
+                            Log.d("MOOD", String.valueOf(survey.getMood()));
+                            BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+
+                            barchart.invalidate();
+                            BarData theData = new BarData(days, barDataSet);
+                            barchart.setData(theData);
+                            barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                            barchart.setTouchEnabled(true);
+                            barchart.setDragEnabled(true);
+                            barchart.setScaleEnabled(true);
+                            Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+                        } else {
+                            Log.d("HERE", "No such document");
+                        }
+                    }
+
+            });
 
         }
 
-
-        BarData theData = new BarData(days, barDataSet);
-        barchart.setData(theData);
-        barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        barchart.setTouchEnabled(true);
-        barchart.setDragEnabled(true);
-        barchart.setScaleEnabled(true);
     }
 
     private void sign_out(){
