@@ -3,13 +3,14 @@ package com.example.moodswings;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class TomorrowMoodPart1 extends AppCompatActivity {
 
     private Survey survey = new Survey();
-
+    private String TAG = "TomorrowMoodPart1";
     private DBAdapter db = new DBAdapter(this);
 
     @Override
@@ -18,7 +19,8 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
         setContentView(R.layout.activity_tomorrow_mood_part1);
 
         survey.setActivities(2);
-        survey.setDiaryEntry(survey.getTomorrowsDate());
+        survey.updateDiaryDate(survey.getTomorrowsDate());
+        Log.d(TAG, survey.toString());
     }
 
     public void onClickDone_Tomorrow_1(View view) {
