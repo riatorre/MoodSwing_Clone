@@ -7,9 +7,9 @@ import android.view.View;
 
 public class TomorrowMoodPart1 extends AppCompatActivity {
 
-    private Survey2 survey_Tomorrow_1;
+    private Survey survey;
 
-    private DBAdapter2 db_Tomorrow_1 = new DBAdapter2(this);
+    private DBAdapter db = new DBAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,15 +17,15 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
         setContentView(R.layout.activity_tomorrow_mood_part1);
 
         //get Survey Data
-//        survey_Tomorrow_1 = (Survey2) getIntent().getExtras().getParcelable("survey_Tomorrow_1");
+        survey = (Survey) getIntent().getExtras().getParcelable("survey_Tomorrow_1");
 
     }
 
     public void fragment_OK_button_ID_Tomorrow_1(View view) {
-        //EditText editText = (EditText) findViewById(R.id.diaryentry);
-        //String value = editText.getText().toString();
-       // survey_Tomorrow_1.setDiaryEntry(value);
-        //db_Tomorrow_1.addSurvey(survey_Tomorrow_1);
+//        EditText editText = (EditText) findViewById(R.id.diaryentry);
+//        String value = editText.getText().toString();
+//        survey.setDiaryEntry(value);
+        db.addSurvey(survey);
 
         Intent goToSurveypart1_Tomorrow_1 = new Intent(getApplicationContext(),MainActivity.class);
  //       goToSurveypart1_Tomorrow_1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
