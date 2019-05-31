@@ -12,7 +12,7 @@
         android:layout_height="125dp"
         android:background="#8C4EB4A1"
         android:gravity="center"
-        android:text="@string/survey_title_2"
+        android:text="Today's Most Impactful Activity"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white"
         android:textStyle="italic"
