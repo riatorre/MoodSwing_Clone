@@ -70,6 +70,7 @@ public class DBAdapter {
                     }
                 });
     }
+
     public Task<DocumentSnapshot> getSurvey(String date){
         return db.collection(surveyStorePath)
                 .document(date.replace("/","_"))
@@ -97,6 +98,8 @@ public class DBAdapter {
                     }
                 });
     }
+
+
     public Task<QuerySnapshot> getSurveys(){
         return db.collection(surveyStorePath).get();
     }
