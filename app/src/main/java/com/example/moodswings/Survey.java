@@ -12,6 +12,7 @@ public class Survey implements Parcelable {
     private String diaryEntry = "";
     private Integer activities = 0;
     private String diaryDate = "";
+    private String UID = "";
 
     // Constructors
     public Survey(){
@@ -73,6 +74,7 @@ public class Survey implements Parcelable {
     public String getDiaryDate(){
         return diaryDate;
     }
+    public String getUID() { return UID; }
 
     // Modify Functions
     public void setMood(Integer newMood){
@@ -86,6 +88,9 @@ public class Survey implements Parcelable {
     public void setActivities(Integer newActivities){
         activities = newActivities;
         this.updateDiaryDate();
+    }
+    public void setUID(String newUID){
+        this.UID = newUID;
     }
     public void updateDiaryDate(){
         diaryDate = this.getTodaysDate();

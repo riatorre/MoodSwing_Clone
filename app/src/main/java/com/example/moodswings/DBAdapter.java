@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,7 +44,7 @@ public class DBAdapter {
     private Context mContext;
 
     private String TAG = "Firebase_FireStore";
-    private String surveyStorePath = "surveys/users/"+uid;
+    private String surveyStorePath = "surveys/users/userSurveys";
 
     Survey surveyResult;
 
@@ -53,6 +54,7 @@ public class DBAdapter {
     }
 
     void addSurvey(Survey survey){
+        survey.setUID(uid);
         db.collection(surveyStorePath)
                 .document(survey.getDiaryDate().replace("/","_"))
                 .set(survey)
@@ -71,57 +73,43 @@ public class DBAdapter {
                 });
     }
 
-    public Task<DocumentSnapshot> getSurvey(String date){
+    public Task<QuerySnapshot> getSurvey(String date){
         return db.collection(surveyStorePath)
-                .document(date.replace("/","_"))
-                .get()
-
-                //Successful Execution
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot document) {
-                        surveyResult = null;
-                        if (document.exists()) {
-                            surveyResult = document.toObject(Survey.class);
-                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        } else {
-                            Log.d(TAG, "No such document");
-                        }
-                    }
-                })/**/
-                //Unsuccessful Execution
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Message.message(mContext, "Unable to retrieve Survey");
-                        Log.w(TAG, "Error Retrieving Survey: ", e);
-                    }
-                });
+                .whereEqualTo(FieldPath.documentId(), date.replace("/","_"))
+                .whereEqualTo("uid", uid)
+                .get();
     }
 
     public Task<QuerySnapshot> getSurveys(){
-        return db.collection(surveyStorePath).get();
+        return db.collection(surveyStorePath)
+                .whereEqualTo("uid", uid)
+                .get();
     }
     public Task<QuerySnapshot> getLatestSurveyForActivity(Integer activity){
         return db.collection(surveyStorePath)
-            .whereEqualTo("activities", activity)
-            .orderBy("diaryDate", Query.Direction.DESCENDING)
-            .limit(1)
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful()) {
-                        for(QueryDocumentSnapshot document : task.getResult()){
-                            Log.d(TAG, document.getId() + " => " + document.getData());
+                .whereEqualTo("uid", uid)
+                .whereEqualTo("activities", activity)
+                .orderBy("diaryDate", Query.Direction.DESCENDING)
+                .limit(1)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                            if(task.getResult().size() > 0) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                }
+                            }else{
+                                Log.d(TAG, "No Survey Found with Activity");
+                            }
+                        } else {
+                            Message.message(mContext,
+                                    "Unable to retrieve surveys with activity");
+                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                    } else {
-                        Message.message(mContext,
-                                "Unable to retrieve surveys with activity");
-                        Log.d(TAG, "get failed with ", task.getException());
                     }
                 }
-            }
         );
     }
 }

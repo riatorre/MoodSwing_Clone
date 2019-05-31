@@ -40,12 +40,13 @@ public class HomeFragment extends Fragment {
     private ArrayList<Survey> mySurveys = new ArrayList<Survey>();
     private String TAG = "HomeFragment";
     private LineGraphSeries<DataPoint> series;
-    private Task<DocumentSnapshot> retrieveSurvey;
+    private Task<QuerySnapshot> retrieveSurvey;
     Survey survey = new Survey();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container,false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
@@ -68,41 +69,47 @@ public class HomeFragment extends Fragment {
 
 
         retrieveSurvey = db.getSurvey(survey.getTodaysDate());
-        retrieveSurvey.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot document) {
-                survey = null;
-                if (document.exists()) {
-                    survey = document.toObject(Survey.class);
-                   // mySurveys.add(survey);
-                    int mood = survey.getMood();
-                    Log.d("HERE", String.valueOf(survey.getMood()));
-                    if(mood != 0){
-                        if(mood == 1){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_angry);
-                        }
-                        if(mood == 2){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
-                        }
-                        if(mood == 3){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_sad);
-                        }
-                        if(mood == 4){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
-                        }
-                        if(mood == 5){
-                            today_button.setBackgroundResource(R.drawable.circle_good);
-                        }
-                        if(mood == 6){
-                            today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
-                        }
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    survey = null;
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.exists()) {
+                            survey = document.toObject(Survey.class);
+                            // mySurveys.add(survey);
+                            int mood = survey.getMood();
+                            Log.d("HERE", String.valueOf(survey.getMood()));
+                            if (mood != 0) {
+                                if (mood == 1) {
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                                }
+                                if (mood == 2) {
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
+                                }
+                                if (mood == 3) {
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_sad);
+                                }
+                                if (mood == 4) {
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
+                                }
+                                if (mood == 5) {
+                                    today_button.setBackgroundResource(R.drawable.circle_good);
+                                }
+                                if (mood == 6) {
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
+                                }
 
-                        tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                                tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                            }
+                            Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+
+                        } else {
+                            Log.d("HERE", "No such document");
+                        }
                     }
-                    Log.d("HERE", "DocumentSnapshot data: " + document.getData());
-
                 } else {
-                    Log.d("HERE", "No such document");
+                    Log.d("QUERY ERROR", "Unable to query");
                 }
             }
         });
@@ -148,7 +155,7 @@ public class HomeFragment extends Fragment {
 
 
         final Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_WEEK,-6);
+        calendar.add(Calendar.DAY_OF_WEEK, -6);
         final ArrayList<String> days = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {
@@ -165,82 +172,77 @@ public class HomeFragment extends Fragment {
             days.add(date);
 
             retrieveSurvey = db.getSurvey(date5);
-            retrieveSurvey.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+            retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
-                public void onSuccess(DocumentSnapshot document) {
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     survey = null;
-                    Survey temp = null;
-                    if (document.exists()) {
-                        survey = document.toObject(Survey.class);
-                        String diaryDate = document.getString("diaryDate");
-                        Integer moodEnum = document.getDouble("mood").intValue();
-                        String diaryEntry = document.getString("diaryEntry");
-                        Integer activities = document.getDouble("activities").intValue();
-                        temp = new Survey(moodEnum,diaryEntry,activities,diaryDate);
-                        int mood = temp.getMood();
-                        mySurveys.add(temp);
-                            if (mood == 1) {
-                                barEntries.add(new BarEntry(1f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 2) {
-                                barEntries.add(new BarEntry(2f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 3) {
-                                barEntries.add(new BarEntry(3f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 4) {
-                                barEntries.add(new BarEntry(4f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 5) {
-                                barEntries.add(new BarEntry(5f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 6) {
-                                barEntries.add(new BarEntry(6f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            if (mood == 0) {
-                                barEntries.add(new BarEntry(0f, finalI));
-                                Log.d("I HERE", String.valueOf(finalI));
-                            }
-                            Log.d("MOOD", String.valueOf(survey.getMood()));
-                            BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+                    if (task.isSuccessful()) {
+                        Survey temp = null;
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            if (document.exists()) {
+                                survey = document.toObject(Survey.class);
+                                String diaryDate = document.getString("diaryDate");
+                                Integer moodEnum = document.getDouble("mood").intValue();
+                                String diaryEntry = document.getString("diaryEntry");
+                                Integer activities = document.getDouble("activities").intValue();
+                                temp = new Survey(moodEnum, diaryEntry, activities, diaryDate);
+                                int mood = temp.getMood();
+                                mySurveys.add(temp);
+                                if (mood == 1) {
+                                    barEntries.add(new BarEntry(1f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 2) {
+                                    barEntries.add(new BarEntry(2f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 3) {
+                                    barEntries.add(new BarEntry(3f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 4) {
+                                    barEntries.add(new BarEntry(4f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 5) {
+                                    barEntries.add(new BarEntry(5f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 6) {
+                                    barEntries.add(new BarEntry(6f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                if (mood == 0) {
+                                    barEntries.add(new BarEntry(0f, finalI));
+                                    Log.d("I HERE", String.valueOf(finalI));
+                                }
+                                Log.d("MOOD", String.valueOf(survey.getMood()));
+                                BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 
-                            barchart.invalidate();
-                            barchart.setDescription(null);
-                            BarData theData = new BarData(days, barDataSet);
-                            barchart.setData(theData);
-                            barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-                            barchart.setTouchEnabled(true);
-                            barchart.setDragEnabled(true);
-                            barchart.setScaleEnabled(true);
-                            Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+                                barchart.invalidate();
+                                barchart.setDescription(null);
+                                BarData theData = new BarData(days, barDataSet);
+                                barchart.setData(theData);
+                                barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                                barchart.setTouchEnabled(true);
+                                barchart.setDragEnabled(true);
+                                barchart.setScaleEnabled(true);
+                                Log.d("HERE", "DocumentSnapshot data: " + document.getData());
 
-                            SurveyAdapter surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
-                            Log.d("MYSURVEY", String.valueOf(mySurveys));
-                            ListView surveysList = view.findViewById(R.id.list_home);
-                            surveysList.setAdapter(surveyAdapter);
+                                SurveyAdapter surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
+                                Log.d("MYSURVEY", String.valueOf(mySurveys));
+                                ListView surveysList = view.findViewById(R.id.list_home);
+                                surveysList.setAdapter(surveyAdapter);
 
-                        } else {
-                            Log.d("HERE", "No such document");
+                            } else {
+                                Log.d("HERE", "No such document");
+                            }
+
                         }
-
                     }
-
+                }
             });
-
         }
-
-    }
-
-    private void sign_out(){
-        FirebaseAuth.getInstance().signOut();
-        Intent authIntent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(authIntent);
-        getActivity().finish();
     }
 }
