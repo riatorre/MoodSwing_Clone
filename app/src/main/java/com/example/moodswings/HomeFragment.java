@@ -42,11 +42,10 @@ public class HomeFragment extends Fragment {
     private LineGraphSeries<DataPoint> series;
     private Task<QuerySnapshot> retrieveSurvey;
     Survey survey = new Survey();
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_home, container,false);
     }
 
     @Override
@@ -108,7 +107,7 @@ public class HomeFragment extends Fragment {
                             Log.d("HERE", "No such document");
                         }
                     }
-                } else {
+                }else{
                     Log.d("QUERY ERROR", "Unable to query");
                 }
             }
@@ -155,7 +154,7 @@ public class HomeFragment extends Fragment {
 
 
         final Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_WEEK, -6);
+        calendar.add(Calendar.DAY_OF_WEEK,-6);
         final ArrayList<String> days = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {

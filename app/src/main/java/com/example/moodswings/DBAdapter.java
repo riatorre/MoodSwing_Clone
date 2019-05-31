@@ -56,7 +56,7 @@ public class DBAdapter {
     void addSurvey(Survey survey){
         survey.setUID(uid);
         db.collection(surveyStorePath)
-                .document(survey.getDiaryDate().replace("/","_"))
+                .document(survey.getDiaryDate().replace("/","_")+"_"+uid)
                 .set(survey)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -75,7 +75,7 @@ public class DBAdapter {
 
     public Task<QuerySnapshot> getSurvey(String date){
         return db.collection(surveyStorePath)
-                .whereEqualTo(FieldPath.documentId(), date.replace("/","_"))
+                .whereEqualTo(FieldPath.documentId(), date.replace("/","_")+"_"+uid)
                 .whereEqualTo("uid", uid)
                 .get();
     }
