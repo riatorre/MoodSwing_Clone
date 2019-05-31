@@ -106,6 +106,47 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+//        retrieveSurveys = db.getSurvey(survey.getTomorrowsDate());
+//        retrieveSurveys.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(DocumentSnapshot document) {
+//                survey = null;
+//                if (document.exists()) {
+//                    survey = document.toObject(Survey.class);
+//                    // mySurveys.add(survey);
+//                    int mood = survey.getMood();
+//                    Log.d("HERE", String.valueOf(survey.getMood()));
+//                    if(mood != 0){
+//                        if(mood == 1){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+//                        }
+//                        if(mood == 2){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_misery);
+//                        }
+//                        if(mood == 3){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_sad);
+//                        }
+//                        if(mood == 4){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_okay);
+//                        }
+//                        if(mood == 5){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_good);
+//                        }
+//                        if(mood == 6){
+//                            tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
+//                        }
+//
+//                    }
+//                    Log.d("HERE", "DocumentSnapshot data: " + document.getData());
+//
+//                } else {
+//                    Log.d("HERE", "No such document");
+//                }
+//            }
+//        });
+
+
         final Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_WEEK,-6);
         final ArrayList<String> days = new ArrayList<>();
@@ -124,7 +165,6 @@ public class HomeFragment extends Fragment {
             days.add(date);
 
             retrieveSurvey = db.getSurvey(date5);
-
             retrieveSurvey.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot document) {
