@@ -36,6 +36,7 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
 
         survey.setActivities(2);
         survey.updateDiaryDate(survey.getTomorrowsDate());
+        db.getLatestSurveyForActivity(1);
         Log.d(TAG, survey.toString());
 
         final Button workID = findViewById(R.id.workID_Tomorrow_1);
