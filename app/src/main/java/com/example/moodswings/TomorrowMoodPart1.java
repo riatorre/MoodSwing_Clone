@@ -7,9 +7,9 @@ import android.view.View;
 
 public class TomorrowMoodPart1 extends AppCompatActivity {
 
-    private Survey2 survey_Tomorrow_1;
+    private Survey survey_Tomorrow_1;
 
-    private DBAdapter2 db_Tomorrow_1 = new DBAdapter2(this);
+    private DBAdapter db_Tomorrow_1 = new DBAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
