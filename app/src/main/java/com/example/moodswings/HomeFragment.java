@@ -60,6 +60,8 @@ public class HomeFragment extends Fragment {
         barchart = (BarChart) view.findViewById(R.id.moodgraph);
         final ArrayList<BarEntry> barEntries = new ArrayList<>();
 
+        today_button.setBackgroundResource(R.drawable.noinput);
+        tomorrow_button.setBackgroundResource(R.drawable.noinput);
 
 
         //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
