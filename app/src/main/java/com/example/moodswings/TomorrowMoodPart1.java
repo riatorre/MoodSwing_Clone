@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class TomorrowMoodPart1 extends AppCompatActivity {
 
-    private Survey survey;
+    private Survey survey = new Survey();
 
     private DBAdapter db = new DBAdapter(this);
 
@@ -17,7 +17,8 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tomorrow_mood_part1);
 
-        //survey.setActivities(2);
+        survey.setActivities(2);
+        survey.setDiaryEntry(survey.getTomorrowsDate());
     }
 
     public void onClickDone_Tomorrow_1(View view) {

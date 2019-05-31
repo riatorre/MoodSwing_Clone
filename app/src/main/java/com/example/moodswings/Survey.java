@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class Survey implements Parcelable {
@@ -86,9 +87,10 @@ public class Survey implements Parcelable {
         activities = newActivities;
         this.updateDiaryDate();
     }
-    private void updateDiaryDate(){
+    public void updateDiaryDate(){
         diaryDate = this.getTodaysDate();
     }
+    public void updateDiaryDate(String date){ diaryDate = date; }
     public void updateSurvey(Integer newMood, String newEntry, Integer newActivities){
         moodEnum = newMood;
         diaryEntry = newEntry;
@@ -96,10 +98,25 @@ public class Survey implements Parcelable {
         this.updateDiaryDate();
     }
     public String getTodaysDate(){
-        return Calendar.getInstance().getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
-                ", " + Calendar.getInstance().get(Calendar.DATE) + "/"
-                + (Calendar.getInstance().get(Calendar.MONTH)+1) + "/"
-                + Calendar.getInstance().get(Calendar.YEAR);
+        GregorianCalendar calendar = new GregorianCalendar();
+        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
+                + ", "
+                + calendar.get(Calendar.DATE)
+                + "/"
+                + (calendar.get(Calendar.MONTH)+1)
+                + "/"
+                + calendar.get(Calendar.YEAR);
+    }
+    public String getTomorrowsDate(){
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.add(Calendar.DATE, 1);
+        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
+                + ", "
+                + calendar.get(Calendar.DATE)
+                + "/"
+                + (calendar.get(Calendar.MONTH)+1)
+                + "/"
+                + calendar.get(Calendar.YEAR);
     }
     public String toString(){
         return "Date: " + diaryDate
