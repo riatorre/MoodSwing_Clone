@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Objects;
+
 public class LoginFragment extends Fragment {
     @Nullable
     @Override
@@ -16,6 +18,7 @@ public class LoginFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
+        Objects.requireNonNull(getActivity()).finish();
         return inflater.inflate(R.layout.fragment_home,container,false);
     }
 }

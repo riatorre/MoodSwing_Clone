@@ -1,6 +1,7 @@
 package com.example.moodswings;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class SurveyAdapter extends ArrayAdapter<Survey> {
-    public SurveyAdapter(Context context, ArrayList<Survey> surveys) {
+    SurveyAdapter(Context context, ArrayList<Survey> surveys) {
         super(context, 0, surveys);
     }
 
@@ -26,6 +27,7 @@ public class SurveyAdapter extends ArrayAdapter<Survey> {
         TextView mood = convertView.findViewById(R.id.Mood);
         TextView activities = convertView.findViewById(R.id.Activities);
 
+        assert survey != null;
         date.setText(survey.getDiaryDate());
         String entryText = "Survey Entry: " + survey.getDiaryEntry();
         entry.setText(entryText);
