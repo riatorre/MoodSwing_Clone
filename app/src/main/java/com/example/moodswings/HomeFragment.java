@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
                                     today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
                                 }
                                 if (mood == 5) {
-                                    today_button.setBackgroundResource(R.drawable.circle_good);
+                                    today_button.setBackgroundResource(R.drawable.circle_toggle_happy);
                                 }
                                 if (mood == 6) {
                                     today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
