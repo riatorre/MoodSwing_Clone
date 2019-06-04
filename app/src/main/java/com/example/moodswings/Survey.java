@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -93,7 +94,7 @@ public class Survey implements Parcelable {
         this.UID = newUID;
     }
     public void updateDiaryDate(){
-        diaryDate = this.getTodaysDate();
+        diaryDate = this.todaysDate();
     }
     public void updateDiaryDate(String date){ diaryDate = date; }
     public void updateSurvey(Integer newMood, String newEntry, Integer newActivities){
@@ -102,7 +103,7 @@ public class Survey implements Parcelable {
         activities = newActivities;
         this.updateDiaryDate();
     }
-    public String getTodaysDate(){
+    public String todaysDate(){
         GregorianCalendar calendar = new GregorianCalendar();
         return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
                 + ", "
@@ -112,7 +113,7 @@ public class Survey implements Parcelable {
                 + "/"
                 + calendar.get(Calendar.YEAR);
     }
-    public String getTomorrowsDate(){
+    public String tomorrowsDate(){
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.add(Calendar.DATE, 1);
         return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
@@ -122,6 +123,14 @@ public class Survey implements Parcelable {
                 + (calendar.get(Calendar.MONTH)+1)
                 + "/"
                 + calendar.get(Calendar.YEAR);
+    }
+    public Date getTodaysDate(){
+        return new Date();
+    }
+    public Date getTomorrowsDate(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return calendar.getTime();
     }
     public String toString(){
         return "Date: " + diaryDate

@@ -35,7 +35,7 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
         setContentView(R.layout.activity_tomorrow_mood_part1);
 
         survey.setActivities(2);
-        survey.updateDiaryDate(survey.getTomorrowsDate());
+        survey.updateDiaryDate(survey.tomorrowsDate());
         db.getLatestSurveyForActivity(1);
         Log.d(TAG, survey.toString());
 

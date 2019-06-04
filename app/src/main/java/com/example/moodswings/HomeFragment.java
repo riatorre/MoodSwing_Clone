@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
         //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
 
-        Task<QuerySnapshot> retrieveSurvey = db.getSurvey(survey.getTodaysDate());
+        Task<QuerySnapshot> retrieveSurvey = db.getSurvey(survey.todaysDate());
         retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
