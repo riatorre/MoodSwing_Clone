@@ -51,7 +51,7 @@
 
         <Button
             android:id="@+id/Work_SchoolID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="Work/School"
@@ -59,12 +59,12 @@
             android:textSize="20sp" />
         <View
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/ExericseID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="@string/exercise"
@@ -72,12 +72,12 @@
             android:textSize="20sp" />
         <View
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/HobbiesID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="Hobbies"
@@ -85,12 +85,12 @@
             android:textSize="20sp" />
         <View
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/LeisureTimeID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="Leisure Time"
@@ -98,12 +98,12 @@
             android:textSize="20sp" />
         <View
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/ErrandsID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="   Errands   "
@@ -111,11 +111,11 @@
             android:textSize="20sp" />
         <View
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
         <Button
             android:id="@+id/SocialEventID"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_button"
             android:text="Social Event"
