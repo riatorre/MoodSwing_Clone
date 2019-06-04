@@ -178,8 +178,8 @@ public class HomeFragment extends Fragment {
                                 barchart.setData(theData);
                                 barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
                                 barchart.setTouchEnabled(true);
-                                barchart.setDragEnabled(true);
-                                barchart.setScaleEnabled(true);
+                                barchart.setDragEnabled(false);
+                                barchart.setScaleEnabled(false);
                                 Log.d("HERE", "DocumentSnapshot data: " + document.getData());
 
                                 if(surveyAdapter == null) surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
