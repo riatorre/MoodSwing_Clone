@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -173,10 +174,14 @@ public class HomeFragment extends Fragment {
                                 Legend legend = barchart.getLegend();
                                 legend.setEnabled(false);
                                 barchart.invalidate();
+                                XAxis xAxis = barchart.getXAxis();
+                                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                                xAxis.setDrawGridLines(false);
                                 barchart.setDescription(null);
                                 BarData theData = new BarData(days, barDataSet);
                                 barchart.setData(theData);
-                                barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                                barchart.animateY(2000);
+                                barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                                 barchart.setTouchEnabled(true);
                                 barchart.setDragEnabled(false);
                                 barchart.setScaleEnabled(false);
