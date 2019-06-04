@@ -1,7 +1,6 @@
 package com.example.moodswings;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,13 +33,13 @@ public class TodayMoodPart2 extends AppCompatActivity {
 
 
         final Button workID = findViewById(R.id.workID);
-        final Button gymID = findViewById(R.id.gymID);
+        final Button gymID = findViewById(R.id.ExericseID);
         final Button schoolID = findViewById(R.id.schoolID);
-        final Button dateID = findViewById(R.id.dateID);
-        final Button FriendTimeID = findViewById(R.id.FriendTimeID);
+        final Button dateID = findViewById(R.id.SocialEventID);
+        final Button FriendTimeID = findViewById(R.id.HobbiesID);
         final Button GoodFoodID = findViewById(R.id.GoodFoodID);
-        final Button hiking = findViewById(R.id.hiking);
-        final Button exerciseID = findViewById(R.id.exerciseID);
+        final Button hiking = findViewById(R.id.LeisureTimeID);
+        final Button exerciseID = findViewById(R.id.ErrandsID);
         final Button badSleepID = findViewById(R.id.badSleepID);
         final Button BadFoodID = findViewById(R.id.BadFoodID);
         final Button ReadingID = findViewById(R.id.ReadingID);

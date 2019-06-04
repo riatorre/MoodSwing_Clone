@@ -110,8 +110,8 @@
             app:layout_constraintBottom_toTopOf="@+id/exerciseID_Tomorrow_1"
             app:layout_constraintEnd_toStartOf="@+id/GoodFoodID_Tomorrow_1"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/dateID_Tomorrow_1"
-            app:layout_constraintTop_toBottomOf="@+id/gymID_Tomorrow_1" />
+            app:layout_constraintTop_toBottomOf="@+id/gymID_Tomorrow_1"
+            app:layout_constraintStart_toEndOf="@+id/dateID_Tomorrow_1" />
 
         <Button
             android:id="@+id/GoodFoodID_Tomorrow_1"
@@ -199,11 +199,11 @@
             android:text="@string/exercise"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/ReadingID_Tomorrow_1"
+            app:layout_constraintTop_toBottomOf="@+id/FriendTimeID_Tomorrow_1"
             app:layout_constraintEnd_toStartOf="@+id/badSleepID_Tomorrow_1"
+            app:layout_constraintBottom_toTopOf="@+id/ReadingID_Tomorrow_1"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/hiking_Tomorrow_1"
-            app:layout_constraintTop_toBottomOf="@+id/FriendTimeID_Tomorrow_1" />
+            app:layout_constraintStart_toEndOf="@+id/hiking_Tomorrow_1" />
 
     </android.support.constraint.ConstraintLayout>
 
