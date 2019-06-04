@@ -10,18 +10,12 @@ public class TodayMoodPart2 extends AppCompatActivity {
 
     private Survey survey;
 
-    boolean pressed_workID = false;
-    boolean pressed_gymID = false;
-    boolean pressed_schoolID = false;
-    boolean pressed_dateID = false;
-    boolean pressed_FriendTimeID = false;
-    boolean pressed_GoodFoodID = false;
-    boolean pressed_hiking = false;
+    boolean pressed_work_schoolID = false;
     boolean pressed_exerciseID = false;
-    boolean pressed_badSleepID = false;
-    boolean pressed_BadFoodID = false;
-    boolean pressed_ReadingID = false;
-    boolean pressed_GoodSleepID = false;
+    boolean pressed_hobbiesID = false;
+    boolean pressed_leisureID = false;
+    boolean pressed_errandsID = false;
+    boolean pressed_socialID = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,273 +26,147 @@ public class TodayMoodPart2 extends AppCompatActivity {
 
 
 
-        final Button workID = findViewById(R.id.workID);
-        final Button gymID = findViewById(R.id.ExericseID);
-        final Button schoolID = findViewById(R.id.schoolID);
-        final Button dateID = findViewById(R.id.SocialEventID);
-        final Button FriendTimeID = findViewById(R.id.HobbiesID);
-        final Button GoodFoodID = findViewById(R.id.GoodFoodID);
-        final Button hiking = findViewById(R.id.LeisureTimeID);
-        final Button exerciseID = findViewById(R.id.ErrandsID);
-        final Button badSleepID = findViewById(R.id.badSleepID);
-        final Button BadFoodID = findViewById(R.id.BadFoodID);
-        final Button ReadingID = findViewById(R.id.ReadingID);
-        final Button GoodSleepID = findViewById(R.id.GoodSleepID);
+        final Button work_schoolID = findViewById(R.id.Work_SchoolID);
+        final Button exerciseID = findViewById(R.id.ExericseID);
+        final Button hobbiesID = findViewById(R.id.HobbiesID);
+        final Button leisureID = findViewById(R.id.LeisureTimeID);
+        final Button errandsID = findViewById(R.id.ErrandsID);
+        final Button socialID = findViewById(R.id.SocialEventID);
 
 
-        workID.setOnClickListener(new View.OnClickListener() {
+        work_schoolID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workID.setBackgroundResource(R.drawable.roundedbuttonpressed);
-                pressed_workID = true;
-                if(pressed_gymID){
-                    gymID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_gymID = false;
-                }
-                if(pressed_schoolID){
-                    schoolID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_schoolID = false;
-                }
-                if(pressed_dateID){
-                    dateID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_dateID = false;
-                }
-                if(pressed_FriendTimeID){
-                    FriendTimeID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_FriendTimeID = false;
-                }
-                if(pressed_GoodFoodID){
-                    GoodFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodFoodID = false;
-                }
-                if(pressed_hiking){
-                    hiking.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_hiking = false;
-                }
+                work_schoolID.setBackgroundResource(R.drawable.roundedbuttonpressed);
+                pressed_work_schoolID = true;
                 if(pressed_exerciseID){
                     exerciseID.setBackgroundResource(R.drawable.rounded_button);
                     pressed_exerciseID = false;
                 }
-                if(pressed_badSleepID){
-                    badSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_badSleepID = false;
+                if(pressed_hobbiesID){
+                    hobbiesID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_hobbiesID = false;
                 }
-                if(pressed_BadFoodID){
-                    BadFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_BadFoodID = false;
+                if(pressed_leisureID){
+                    leisureID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_leisureID = false;
                 }
-                if(pressed_ReadingID){
-                    ReadingID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_ReadingID = false;
+                if(pressed_errandsID){
+                    errandsID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_errandsID = false;
                 }
-                if(pressed_GoodSleepID){
-                    GoodSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodSleepID = false;
+                if(pressed_socialID){
+                    socialID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_socialID = false;
                 }
             }
         });
 
-        gymID.setOnClickListener(new View.OnClickListener() {
+        exerciseID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gymID.setBackgroundResource(R.drawable.roundedbuttonpressed);
-                pressed_gymID = true;
-                if(pressed_workID){
-                    workID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_workID = false;
+                exerciseID.setBackgroundResource(R.drawable.roundedbuttonpressed);
+                pressed_exerciseID = true;
+                if(pressed_work_schoolID){
+                    work_schoolID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_work_schoolID = false;
                 }
-                if(pressed_schoolID){
-                    schoolID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_schoolID = false;
+                if(pressed_hobbiesID){
+                    hobbiesID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_hobbiesID = false;
                 }
-                if(pressed_dateID){
-                    dateID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_dateID = false;
+                if(pressed_leisureID){
+                    leisureID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_leisureID = false;
                 }
-                if(pressed_FriendTimeID){
-                    FriendTimeID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_FriendTimeID = false;
+                if(pressed_errandsID){
+                    errandsID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_errandsID = false;
                 }
-                if(pressed_GoodFoodID){
-                    GoodFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodFoodID = false;
-                }
-                if(pressed_hiking){
-                    hiking.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_hiking = false;
-                }
-                if(pressed_exerciseID){
-                    exerciseID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_exerciseID = false;
-                }
-                if(pressed_badSleepID){
-                    badSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_badSleepID = false;
-                }
-                if(pressed_BadFoodID){
-                    BadFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_BadFoodID = false;
-                }
-                if(pressed_ReadingID){
-                    ReadingID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_ReadingID = false;
-                }
-                if(pressed_GoodSleepID){
-                    GoodSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodSleepID = false;
+                if(pressed_socialID){
+                    socialID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_socialID = false;
                 }
             }
         });
-       schoolID.setOnClickListener(new View.OnClickListener() {
+        hobbiesID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                schoolID.setBackgroundResource(R.drawable.roundedbuttonpressed);
-                pressed_schoolID = true;
-                if(pressed_workID){
-                    workID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_workID = false;
-                }
-                if(pressed_gymID){
-                    gymID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_gymID = false;
-                }
-                if(pressed_dateID){
-                    dateID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_dateID = false;
-                }
-                if(pressed_FriendTimeID){
-                    FriendTimeID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_FriendTimeID = false;
-                }
-                if(pressed_GoodFoodID){
-                    GoodFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodFoodID = false;
-                }
-                if(pressed_hiking){
-                    hiking.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_hiking = false;
+                hobbiesID.setBackgroundResource(R.drawable.roundedbuttonpressed);
+                pressed_hobbiesID = true;
+                if(pressed_work_schoolID){
+                    work_schoolID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_work_schoolID = false;
                 }
                 if(pressed_exerciseID){
                     exerciseID.setBackgroundResource(R.drawable.rounded_button);
                     pressed_exerciseID = false;
                 }
-                if(pressed_badSleepID){
-                    badSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_badSleepID = false;
+                if(pressed_leisureID){
+                    leisureID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_leisureID = false;
                 }
-                if(pressed_BadFoodID){
-                    BadFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_BadFoodID = false;
+                if(pressed_errandsID){
+                    errandsID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_errandsID = false;
                 }
-                if(pressed_ReadingID){
-                    ReadingID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_ReadingID = false;
-                }
-                if(pressed_GoodSleepID){
-                    GoodSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodSleepID = false;
+                if(pressed_socialID){
+                    socialID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_socialID = false;
                 }
             }
         });
-        dateID.setOnClickListener(new View.OnClickListener() {
+        leisureID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dateID.setBackgroundResource(R.drawable.roundedbuttonpressed);
-                pressed_dateID = true;
-                if(pressed_workID){
-                    workID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_workID = false;
-                }
-                if(pressed_gymID){
-                    gymID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_gymID = false;
-                }
-                if(pressed_schoolID){
-                    schoolID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_schoolID = false;
-                }
-                if(pressed_FriendTimeID){
-                    FriendTimeID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_FriendTimeID =false;
-                }
-                if(pressed_GoodFoodID){
-                    GoodFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodFoodID = false;
-                }
-                if(pressed_hiking){
-                    hiking.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_hiking = false;
+                leisureID.setBackgroundResource(R.drawable.roundedbuttonpressed);
+                pressed_leisureID = true;
+                if(pressed_work_schoolID){
+                    work_schoolID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_work_schoolID = false;
                 }
                 if(pressed_exerciseID){
                     exerciseID.setBackgroundResource(R.drawable.rounded_button);
                     pressed_exerciseID = false;
                 }
-                if(pressed_badSleepID){
-                    badSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_badSleepID = false;
+                if(pressed_hobbiesID){
+                    hobbiesID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_hobbiesID = false;
                 }
-                if(pressed_BadFoodID){
-                    BadFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_BadFoodID = false;
+                if(pressed_errandsID){
+                    errandsID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_errandsID = false;
                 }
-                if(pressed_ReadingID){
-                    ReadingID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_ReadingID = false;
-                }
-                if(pressed_GoodSleepID){
-                    GoodSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodSleepID = false;
+                if(pressed_socialID){
+                    socialID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_socialID = false;
                 }
             }
         });
-        FriendTimeID.setOnClickListener(new View.OnClickListener() {
+        errandsID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FriendTimeID.setBackgroundResource(R.drawable.roundedbuttonpressed);
-                pressed_FriendTimeID = true;
-                if(pressed_workID){
-                    workID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_workID = false;
-                }
-                if(pressed_gymID){
-                    gymID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_gymID = false;
-                }
-                if(pressed_schoolID){
-                    schoolID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_schoolID = false;
-                }
-                if(pressed_dateID){
-                    dateID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_dateID = false;
-                }
-                if(pressed_GoodFoodID){
-                    GoodFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodFoodID = false;
-                }
-                if(pressed_hiking){
-                    hiking.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_hiking = false;
+                errandsID.setBackgroundResource(R.drawable.roundedbuttonpressed);
+                pressed_errandsID = true;
+                if(pressed_work_schoolID){
+                    work_schoolID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_work_schoolID = false;
                 }
                 if(pressed_exerciseID){
                     exerciseID.setBackgroundResource(R.drawable.rounded_button);
                     pressed_exerciseID = false;
                 }
-                if(pressed_badSleepID){
-                    badSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_badSleepID = false;
+                if(pressed_hobbiesID){
+                    hobbiesID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_hobbiesID = false;
                 }
-                if(pressed_BadFoodID){
-                    BadFoodID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_BadFoodID = false;
+                if(pressed_leisureID){
+                    leisureID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_leisureID = false;
                 }
-                if(pressed_ReadingID){
-                    ReadingID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_ReadingID = false;
-                }
-                if(pressed_GoodSleepID){
-                    GoodSleepID.setBackgroundResource(R.drawable.rounded_button);
-                    pressed_GoodSleepID = false;
+                if(pressed_socialID){
+                    socialID.setBackgroundResource(R.drawable.rounded_button);
+                    pressed_socialID = false;
                 }
             }
         });
