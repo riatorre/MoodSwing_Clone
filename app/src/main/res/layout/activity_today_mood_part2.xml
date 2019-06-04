@@ -38,13 +38,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="420dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/Survey2_NextID"
         app:layout_constraintTop_toBottomOf="@+id/diary_title">
 
@@ -56,11 +58,12 @@
             android:background="@drawable/rounded_button"
             android:text="Work/School"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ExericseID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
             android:id="@+id/ExericseID"
@@ -69,11 +72,12 @@
             android:background="@drawable/rounded_button"
             android:text="@string/exercise"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/HobbiesID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Work_SchoolID" />
+
 
         <Button
             android:id="@+id/HobbiesID"
@@ -82,11 +86,12 @@
             android:background="@drawable/rounded_button"
             android:text="Hobbies"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/LeisureTimeID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExericseID" />
+
 
         <Button
             android:id="@+id/LeisureTimeID"
@@ -95,11 +100,12 @@
             android:background="@drawable/rounded_button"
             android:text="Leisure Time"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ErrandsID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HobbiesID" />
+
 
         <Button
             android:id="@+id/ErrandsID"
@@ -108,11 +114,15 @@
             android:background="@drawable/rounded_button"
             android:text="   Errands   "
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/SocialEventID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LeisureTimeID" />
+        <!--<View-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_weight="1" />-->
         <Button
             android:id="@+id/SocialEventID"
             android:layout_width="310dp"
@@ -121,9 +131,10 @@
             android:text="Social Event"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="58dp" />
-
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ErrandsID" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
