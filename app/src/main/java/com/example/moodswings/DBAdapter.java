@@ -83,13 +83,14 @@ public class DBAdapter {
     public Task<QuerySnapshot> getSurveys(){
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
+                .orderBy("todaysDate", Query.Direction.DESCENDING)
                 .get();
     }
     public Task<QuerySnapshot> getLatestSurveyForActivity(Integer activity){
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
                 .whereEqualTo("activities", activity)
-                .orderBy("diaryDate", Query.Direction.DESCENDING)
+                .orderBy("todaysDate", Query.Direction.DESCENDING)
                 .limit(1)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
