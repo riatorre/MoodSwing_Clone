@@ -63,64 +63,59 @@ public class Survey implements Parcelable {
     };
 
     // Access Functions
-    public Integer getMood(){
+    Integer getMood(){
         return moodEnum;
     }
-    public String getDiaryEntry(){
+    String getDiaryEntry(){
         return diaryEntry;
     }
-    public Integer getActivities(){
+    Integer getActivities(){
         return activities;
     }
-    public String getDiaryDate(){
+    String getDiaryDate(){
         return diaryDate;
     }
     public String getUID() { return UID; }
 
     // Modify Functions
-    public void setMood(Integer newMood){
+    void setMood(Integer newMood){
         moodEnum = newMood;
         this.updateDiaryDate();
     }
-    public void setDiaryEntry(String newEntry){
+    void setDiaryEntry(String newEntry){
         diaryEntry = newEntry;
         this.updateDiaryDate();
     }
-    public void setActivities(Integer newActivities){
+    void setActivities(Integer newActivities){
         activities = newActivities;
         this.updateDiaryDate();
     }
-    public void setUID(String newUID){
+    void setUID(String newUID){
         this.UID = newUID;
     }
-    public void updateDiaryDate(){
+    private void updateDiaryDate(){
         diaryDate = this.todaysDate();
     }
-    public void updateDiaryDate(String date){ diaryDate = date; }
-    public void updateSurvey(Integer newMood, String newEntry, Integer newActivities){
-        moodEnum = newMood;
-        diaryEntry = newEntry;
-        activities = newActivities;
-        this.updateDiaryDate();
-    }
-    public String todaysDate(){
+    void updateDiaryDate(String date){ diaryDate = date; }
+
+    String todaysDate(){
         GregorianCalendar calendar = new GregorianCalendar();
         return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
                 + ", "
-                + calendar.get(Calendar.DATE)
-                + "/"
                 + (calendar.get(Calendar.MONTH)+1)
+                + "/"
+                + calendar.get(Calendar.DATE)
                 + "/"
                 + calendar.get(Calendar.YEAR);
     }
-    public String tomorrowsDate(){
+    String tomorrowsDate(){
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.add(Calendar.DATE, 1);
         return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
                 + ", "
-                + calendar.get(Calendar.DATE)
-                + "/"
                 + (calendar.get(Calendar.MONTH)+1)
+                + "/"
+                + calendar.get(Calendar.DATE)
                 + "/"
                 + calendar.get(Calendar.YEAR);
     }
