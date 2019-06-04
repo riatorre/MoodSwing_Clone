@@ -73,25 +73,25 @@ public class HomeFragment extends Fragment {
                             Log.d("HERE", String.valueOf(survey.getMood()));
                             if (mood != 0) {
                                 if (mood == 1) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                                    today_button.setBackgroundResource(R.drawable.circle_angry_toggle);
                                 }
                                 if (mood == 2) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_misery);
+                                    today_button.setBackgroundResource(R.drawable.circle_misery_toggle);
                                 }
                                 if (mood == 3) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_sad);
+                                    today_button.setBackgroundResource(R.drawable.circle_sad_toggle);
                                 }
                                 if (mood == 4) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_okay);
+                                    today_button.setBackgroundResource(R.drawable.circle_okay_toggle);
                                 }
                                 if (mood == 5) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_happy);
+                                    today_button.setBackgroundResource(R.drawable.circle_good_toggle);
                                 }
                                 if (mood == 6) {
-                                    today_button.setBackgroundResource(R.drawable.circle_toggle_happy2);
+                                    today_button.setBackgroundResource(R.drawable.circle_happy_toggle);
                                 }
 
-                                tomorrow_button.setBackgroundResource(R.drawable.circle_toggle_angry);
+                                tomorrow_button.setBackgroundResource(R.drawable.circle_angry_toggle);
                             }
                             Log.d("HERE", "DocumentSnapshot data: " + document.getData());
 
