@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class TodayMoodPart1 extends AppCompatActivity {
     final Survey survey = new Survey();
@@ -208,9 +209,16 @@ public class TodayMoodPart1 extends AppCompatActivity {
     }
 
     public void onClickSurveypage1(View view) {
-        Intent goToSurveypart2 = new Intent(getApplicationContext(), TodayMoodPart2.class);
-        goToSurveypart2.putExtra("survey", survey);
-        startActivity(goToSurveypart2);
+        if(survey.getMood()==0){
+            Toast.makeText(this, "Please choose a mood.",
+                    Toast.LENGTH_LONG).show();
+        }
+        if(survey.getMood()!=0){
+            Intent goToSurveypart2 = new Intent(getApplicationContext(), TodayMoodPart2.class);
+            goToSurveypart2.putExtra("survey", survey);
+            startActivity(goToSurveypart2);
+        }
+
     }
 
 }
