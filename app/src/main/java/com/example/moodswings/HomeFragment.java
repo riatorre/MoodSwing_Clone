@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -168,7 +169,9 @@ public class HomeFragment extends Fragment {
                                 }
                                 Log.d("MOOD", String.valueOf(survey.getMood()));
                                 BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
-
+// hide legend
+                                Legend legend = barchart.getLegend();
+                                legend.setEnabled(false);
                                 barchart.invalidate();
                                 barchart.setDescription(null);
                                 BarData theData = new BarData(days, barDataSet);
@@ -183,6 +186,7 @@ public class HomeFragment extends Fragment {
                                 Log.d("MYSURVEY", String.valueOf(mySurveys));
                                 ListView surveysList = view.findViewById(R.id.list_home);
                                 surveysList.setAdapter(surveyAdapter);
+
 
                             } else {
                                 Log.d("HERE", "No such document");

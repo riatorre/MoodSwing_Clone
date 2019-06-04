@@ -193,9 +193,8 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/moodgraph"
                 android:layout_width="match_parent"
-                android:layout_height="221dp"
-                android:layout_marginBottom="20dp">
-            </com.github.mikephil.charting.charts.BarChart>
+                android:layout_height="300dp"
+                android:layout_marginBottom="20dp"></com.github.mikephil.charting.charts.BarChart>
 
             <com.example.moodswings.MyListView
                 android:id="@+id/list_home"
