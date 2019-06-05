@@ -30,23 +30,24 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
+
 public class DBAdapter {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private String uid = user.getUid();
+    private String uid = Objects.requireNonNull(user).getUid();
     private FirebaseFirestore db;
     private Context mContext;
 
     private String TAG = "Firebase_FireStore";
     private String surveyStorePath = "surveys/users/userSurveys";
-
-    Survey surveyResult;
 
     DBAdapter(Context mContext){
         this.mContext = mContext;
@@ -61,13 +62,13 @@ public class DBAdapter {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Message.message( mContext, "Today's Survey successfully stored");
+                        Message.message( mContext, "Survey successfully stored");
                         Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Message.message( mContext, "Failed to store Today's Survey");
+                        Message.message( mContext, "Failed to store Survey");
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
@@ -112,5 +113,29 @@ public class DBAdapter {
                     }
                 }
         );
+    }
+    public Task<QuerySnapshot> getWeekSurveys(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -6);
+        Date temp = calendar.getTime();
+        return db.collection(surveyStorePath)
+                .whereEqualTo("uid", uid)
+                .whereGreaterThanOrEqualTo("todaysDate", temp)
+                .orderBy("todaysDate", Query.Direction.DESCENDING)
+                .limit(7)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                }
+                        } else {
+                            Message.message(mContext,
+                                    "Unable to retrieve surveys with activity");
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
     }
 }

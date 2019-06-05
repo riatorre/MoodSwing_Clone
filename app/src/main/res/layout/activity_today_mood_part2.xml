@@ -27,7 +27,7 @@
         android:layout_marginBottom="75dp"
         android:background="@drawable/rounded_button"
         android:drawableEnd="@drawable/ic_arrow"
-        android:onClick="onClickNextPart2"
+        android:onClick="onClickSurveypage2"
         android:padding="10dp"
         android:radius="3dp"
         android:text="@string/next"
@@ -38,125 +38,114 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <RadioGroup
-        android:layout_width="413dp"
-        android:layout_height="554dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diary_title"
-        app:layout_constraintVertical_bias="0.0">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="439dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/Survey2_NextID"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="399dp"
+        android:layout_height="372dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Survey2_NextID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_title">
+
+
+        <RadioButton
+            android:id="@+id/Work_SchoolID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Work/School"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ExericseID"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diary_title">
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <RadioButton
-                android:id="@+id/Work_SchoolID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Work/School"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/ExericseID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/ExericseID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/exercise"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/HobbiesID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Work_SchoolID" />
 
 
-            <RadioButton
-                android:id="@+id/ExericseID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="@string/exercise"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/HobbiesID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Work_SchoolID" />
+        <RadioButton
+            android:id="@+id/HobbiesID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Hobbies"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/LeisureTimeID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExericseID" />
 
 
-            <RadioButton
-                android:id="@+id/HobbiesID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Hobbies"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/LeisureTimeID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ExericseID" />
+        <RadioButton
+            android:id="@+id/LeisureTimeID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Leisure Time"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ErrandsID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HobbiesID" />
 
 
-            <RadioButton
-                android:id="@+id/LeisureTimeID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Leisure Time"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/ErrandsID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/HobbiesID" />
+        <RadioButton
+            android:id="@+id/ErrandsID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="   Errands   "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/SocialEventID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LeisureTimeID" />
 
+        <RadioButton
+            android:id="@+id/SocialEventID"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Social Event"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ErrandsID" />
 
-            <RadioButton
-                android:id="@+id/ErrandsID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="   Errands   "
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/SocialEventID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LeisureTimeID" />
-
-            <RadioButton
-                android:id="@+id/SocialEventID"
-                android:layout_width="310dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_button"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Social Event"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ErrandsID" />
-
-        </android.support.constraint.ConstraintLayout>
-    </RadioGroup>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -109,28 +109,24 @@ public class HomeFragment extends Fragment {
         calendar.add(Calendar.DAY_OF_WEEK,-6);
         final ArrayList<String> days = new ArrayList<>();
 
-        for (int i = 0; i < 7; i++) {
-            final int finalI = i;
-            String date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-            String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
-                    ", " + calendar.get(Calendar.DATE) + "/"
-                    + (calendar.get(Calendar.MONTH) + 1) + "/"
-                    + calendar.get(Calendar.YEAR);
-            Log.d("DATE", date5);
-            calendar.add(Calendar.DAY_OF_WEEK, 1);
-
-
-            days.add(date);
-
-            retrieveSurvey = db.getSurvey(date5);
+            retrieveSurvey = db.getWeekSurveys();
 
             retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     survey = null;
+                    int finalI = 0;
                     if (task.isSuccessful()) {
                         Survey temp;
+                        String date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                        String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                                ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
+                                + calendar.get(Calendar.DATE) + "/"
+                                + calendar.get(Calendar.YEAR);
+                        Log.d("HERE", date5 );
+                        calendar.add(Calendar.DAY_OF_WEEK, 1);
                         for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            days.add(date);
                             if (document.exists()) {
                                 survey = document.toObject(Survey.class);
                                 String diaryDate = document.getString("diaryDate");
@@ -138,6 +134,17 @@ public class HomeFragment extends Fragment {
                                 String diaryEntry = document.getString("diaryEntry");
                                 Integer activities = Objects.requireNonNull(document.getDouble("activities")).intValue();
                                 temp = new Survey(moodEnum, diaryEntry, activities, diaryDate);
+                                while(!date5.equals(diaryDate)) {
+                                    date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                                    date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                                            ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
+                                            + calendar.get(Calendar.DATE) + "/"
+                                            + calendar.get(Calendar.YEAR);
+                                    Log.d("HERE", date5 );
+                                    calendar.add(Calendar.DAY_OF_WEEK, 1);
+                                    days.add(date);
+                                    finalI++;
+                                }
                                 int mood = temp.getMood();
                                 mySurveys.add(temp);
                                 if (mood == 1) {
@@ -196,11 +203,18 @@ public class HomeFragment extends Fragment {
                             } else {
                                 Log.d("HERE", "No such document");
                             }
-
+                            date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                            date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                                    ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
+                                    + calendar.get(Calendar.DATE) + "/"
+                                    + calendar.get(Calendar.YEAR);
+                            calendar.add(Calendar.DAY_OF_WEEK, 1);
+                            Log.d("HERE", date5 );
+                            finalI++;
                         }
                     }
                 }
             });
         }
-    }
+
 }
