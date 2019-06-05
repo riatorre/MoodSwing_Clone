@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +69,7 @@ public class HomeFragment extends Fragment {
                             survey = document.toObject(Survey.class);
                             // mySurveys.add(survey);
                             int mood = survey.getMood();
-                            Log.d("HERE", String.valueOf(survey.getMood()));
+
                             if (mood != 0) {
                                 if (mood == 1) {
                                     today_button.setBackgroundResource(R.drawable.circle_angry_toggle);
@@ -90,20 +89,69 @@ public class HomeFragment extends Fragment {
                                 if (mood == 6) {
                                     today_button.setBackgroundResource(R.drawable.circle_happy_toggle);
                                 }
-
-                                tomorrow_button.setBackgroundResource(R.drawable.circle_angry_toggle);
                             }
-                            Log.d("HERE", "DocumentSnapshot data: " + document.getData());
-
-                        } else {
-                            Log.d("HERE", "No such document");
                         }
                     }
-                }else{
-                    Log.d("QUERY ERROR", "Unable to query");
                 }
             }
         });
+
+        Task<QuerySnapshot> retrieveTomorrowSurvey = db.getSurvey(survey.tomorrowsDate());
+        retrieveTomorrowSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    survey = null;
+                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                        if (document.exists()) {
+                            survey = document.toObject(Survey.class);
+                            Task<QuerySnapshot> retrieveTomorrowSurveyPrediction = db.getLatestSurveyForActivity(survey.getActivities());
+                            retrieveTomorrowSurveyPrediction.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        if (Objects.requireNonNull(task.getResult()).size() > 0) {
+                                            survey = null;
+                                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                                if (document.exists()) {
+                                                    survey = document.toObject(Survey.class);
+                                                    // mySurveys.add(survey);
+                                                    int mood = survey.getMood();
+
+                                                    if (mood != 0) {
+                                                        if (mood == 1) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_angry_toggle);
+                                                        }
+                                                        if (mood == 2) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_misery_toggle);
+                                                        }
+                                                        if (mood == 3) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_sad_toggle);
+                                                        }
+                                                        if (mood == 4) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_okay_toggle);
+                                                        }
+                                                        if (mood == 5) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_good_toggle);
+                                                        }
+                                                        if (mood == 6) {
+                                                            tomorrow_button.setBackgroundResource(R.drawable.circle_happy_toggle);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            tomorrow_button.setBackgroundResource(R.drawable.circle_okay_toggle);
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
 
         final Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_WEEK,-6);
@@ -123,7 +171,6 @@ public class HomeFragment extends Fragment {
                                 ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
                                 + calendar.get(Calendar.DATE) + "/"
                                 + calendar.get(Calendar.YEAR);
-                        Log.d("HERE", date5 );
                         calendar.add(Calendar.DAY_OF_WEEK, 1);
                         for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                             days.add(date);
@@ -140,7 +187,6 @@ public class HomeFragment extends Fragment {
                                             ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
                                             + calendar.get(Calendar.DATE) + "/"
                                             + calendar.get(Calendar.YEAR);
-                                    Log.d("HERE", date5 );
                                     calendar.add(Calendar.DAY_OF_WEEK, 1);
                                     days.add(date);
                                     finalI++;
@@ -149,33 +195,25 @@ public class HomeFragment extends Fragment {
                                 mySurveys.add(temp);
                                 if (mood == 1) {
                                     barEntries.add(new BarEntry(1f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 2) {
                                     barEntries.add(new BarEntry(2f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 3) {
                                     barEntries.add(new BarEntry(3f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 4) {
                                     barEntries.add(new BarEntry(4f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 5) {
                                     barEntries.add(new BarEntry(5f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 6) {
                                     barEntries.add(new BarEntry(6f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
                                 if (mood == 0) {
                                     barEntries.add(new BarEntry(0f, finalI));
-                                    Log.d("I HERE", String.valueOf(finalI));
                                 }
-                                Log.d("MOOD", String.valueOf(survey.getMood()));
                                 BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 // hide legend
                                 Legend legend = barchart.getLegend();
@@ -192,16 +230,12 @@ public class HomeFragment extends Fragment {
                                 barchart.setTouchEnabled(true);
                                 barchart.setDragEnabled(false);
                                 barchart.setScaleEnabled(false);
-                                Log.d("HERE", "DocumentSnapshot data: " + document.getData());
 
                                 if(surveyAdapter == null) surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
-                                Log.d("MYSURVEY", String.valueOf(mySurveys));
                                 ListView surveysList = view.findViewById(R.id.list_home);
                                 surveysList.setAdapter(surveyAdapter);
 
 
-                            } else {
-                                Log.d("HERE", "No such document");
                             }
                             date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
                             date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
@@ -209,7 +243,6 @@ public class HomeFragment extends Fragment {
                                     + calendar.get(Calendar.DATE) + "/"
                                     + calendar.get(Calendar.YEAR);
                             calendar.add(Calendar.DAY_OF_WEEK, 1);
-                            Log.d("HERE", date5 );
                             finalI++;
                         }
                     }
