@@ -91,6 +91,7 @@ public class DBAdapter {
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
                 .whereEqualTo("activities", activity)
+                .whereLessThan("todaysDate", new Date())
                 .orderBy("todaysDate", Query.Direction.DESCENDING)
                 .limit(1)
                 .get()
