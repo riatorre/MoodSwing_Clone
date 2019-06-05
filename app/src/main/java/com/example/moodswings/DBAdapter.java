@@ -22,7 +22,6 @@ package com.example.moodswings;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,20 +32,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class DBAdapter {
+class DBAdapter {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String uid = Objects.requireNonNull(user).getUid();
     private FirebaseFirestore db;
     private Context mContext;
 
-    private String TAG = "Firebase_FireStore";
     private String surveyStorePath = "surveys/users/userSurveys";
 
     DBAdapter(Context mContext){
@@ -63,13 +60,11 @@ public class DBAdapter {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Message.message( mContext, "Survey successfully stored");
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Message.message( mContext, "Failed to store Survey");
-                        Log.w(TAG, "Error writing document", e);
                     }
                 });
     }
@@ -87,7 +82,7 @@ public class DBAdapter {
                 .orderBy("todaysDate", Query.Direction.DESCENDING)
                 .get();
     }
-    public Task<QuerySnapshot> getLatestSurveyForActivity(Integer activity){
+    Task<QuerySnapshot> getLatestSurveyForActivity(Integer activity){
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
                 .whereEqualTo("activities", activity)
@@ -98,18 +93,9 @@ public class DBAdapter {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
-                            if(Objects.requireNonNull(task.getResult()).size() > 0) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                }
-                            }else{
-                                Log.d(TAG, "No Survey Found with Activity");
-                            }
-                        } else {
+                        if(!task.isSuccessful()) {
                             Message.message(mContext,
                                     "Unable to retrieve surveys with activity");
-                            Log.d(TAG, "get failed with ", task.getException());
                         }
                     }
                 }
@@ -129,14 +115,9 @@ public class DBAdapter {
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                }
-                        } else {
+                        if(!task.isSuccessful()) {
                             Message.message(mContext,
-                                    "Unable to retrieve surveys with activity");
-                            Log.d(TAG, "get failed with ", task.getException());
+                                    "Unable to retrieve surveys for the week");
                         }
                     }
                 });
