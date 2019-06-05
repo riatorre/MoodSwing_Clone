@@ -117,7 +117,7 @@ class DBAdapter {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(!task.isSuccessful()) {
                             Message.message(mContext,
-                                    "Unable to retrieve surveys with activity");
+                                    "Unable to retrieve surveys for the week");
                         }
                     }
                 });
