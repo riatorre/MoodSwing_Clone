@@ -7,6 +7,84 @@
     android:layout_height="match_parent"
     tools:context=".TodayMoodPart1">
 
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_good_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/TodayMoodBtnID5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/TodayMoodBtnID3"
+        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID1" />
+
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_happy_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintTop_toTopOf="@+id/TodayMoodBtnID4" />
+
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_okay_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintEnd_toStartOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TodayMoodBtnID4" />
+
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_sad_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/TodayMoodBtnID1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/TodayMoodBtnID1"
+        app:layout_constraintTop_toTopOf="@+id/TodayMoodBtnID1" />
+
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_misery_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintEnd_toStartOf="@+id/TodayMoodBtnID2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/TodayMoodBtnID0"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <RadioButton
+        android:id="@+id/TodayMoodBtnID0"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_angry_radio"
+        android:button="@android:color/transparent"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/TodayMoodBtnID1"
+        app:layout_constraintEnd_toStartOf="@+id/TodayMoodBtnID1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TodayMoodBtnID1" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
@@ -21,71 +99,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.example.moodswings.MyRadioGroup
-        android:id="@+id/MoodRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="1.0">
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID0"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_angry_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_misery_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_sad_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_okay_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_good_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-        <RadioButton
-            android:id="@+id/TodayMoodBtnID5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_happy_radio"
-            android:button="@android:color/transparent"
-            android:textColor="#fff" />
-
-    </com.example.moodswings.MyRadioGroup>
 
     <Button
         android:id="@+id/button2"
