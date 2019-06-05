@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/pacifico"
         android:shadowColor="#00FFFFFF"
-        android:text="Your Surveys"
+        android:text="@string/your_surveys"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#4EB4A1"
