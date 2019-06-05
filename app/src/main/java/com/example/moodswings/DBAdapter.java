@@ -74,14 +74,14 @@ public class DBAdapter {
                 });
     }
 
-    public Task<QuerySnapshot> getSurvey(String date){
+    Task<QuerySnapshot> getSurvey(String date){
         return db.collection(surveyStorePath)
                 .whereEqualTo(FieldPath.documentId(), date.replace("/","_")+"_"+uid)
                 .whereEqualTo("uid", uid)
                 .get();
     }
 
-    public Task<QuerySnapshot> getSurveys(){
+    Task<QuerySnapshot> getSurveys(){
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
                 .orderBy("todaysDate", Query.Direction.DESCENDING)
@@ -98,7 +98,7 @@ public class DBAdapter {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()) {
-                            if(task.getResult().size() > 0) {
+                            if(Objects.requireNonNull(task.getResult()).size() > 0) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }
@@ -114,7 +114,7 @@ public class DBAdapter {
                 }
         );
     }
-    public Task<QuerySnapshot> getWeekSurveys(){
+    Task<QuerySnapshot> getWeekSurveys(){
         Calendar calendar = Calendar.getInstance();
         Date upperBound = calendar.getTime();
         calendar.add(Calendar.DATE, -6);

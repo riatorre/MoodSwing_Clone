@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class TodayMoodPart3 extends AppCompatActivity {
     private Survey survey;
     private DBAdapter db = new DBAdapter(this);
@@ -17,10 +19,11 @@ public class TodayMoodPart3 extends AppCompatActivity {
         setContentView(R.layout.activity_today_mood_part3);
 
         //get Survey Data
-        survey = getIntent().getExtras().getParcelable("survey");
+        survey = Objects.requireNonNull(getIntent().getExtras()).getParcelable("survey");
 
         //Set title entry
         //Survey survey = new Survey();
+        assert survey != null;
         String title = survey.getDiaryDate();
 
         TextView err = findViewById(R.id.diary_title);

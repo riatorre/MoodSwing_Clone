@@ -16,6 +16,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class NotificationFragment extends Fragment {
@@ -29,17 +30,17 @@ public class NotificationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_notification,container,false);
         Task<QuerySnapshot> retrieveSurveys = db.getSurveys();
-        retrieveSurveys.addOnCompleteListener(getActivity(),
+        retrieveSurveys.addOnCompleteListener(Objects.requireNonNull(getActivity()),
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete( @NonNull Task<QuerySnapshot> task) {
                         mySurveys.clear();
                         if (task.isSuccessful()) {
-                            for(QueryDocumentSnapshot document : task.getResult()){
+                            for(QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())){
                                 String diaryDate = document.getString("diaryDate");
-                                Integer moodEnum = document.getDouble("mood").intValue();
+                                Integer moodEnum = Objects.requireNonNull(document.getDouble("mood")).intValue();
                                 String diaryEntry = document.getString("diaryEntry");
-                                Integer activities = document.getDouble("activities").intValue();
+                                Integer activities = Objects.requireNonNull(document.getDouble("activities")).intValue();
                                 Survey temp = new Survey(moodEnum,diaryEntry,activities,diaryDate);
                                 mySurveys.add(temp);
                                 Log.d(TAG, document.getId() + " => " + document.getData());
@@ -54,6 +55,7 @@ public class NotificationFragment extends Fragment {
                                     "Unable to retrieve your Surveys");
                             Log.d(TAG, "get failed with ", task.getException());
                         }
+                        assert mySurveys != null;
                         Log.d(TAG,mySurveys.toString());
                     }
                 });
