@@ -62,13 +62,13 @@ public class DBAdapter {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Message.message( mContext, "Today's Survey successfully stored");
+                        Message.message( mContext, "Survey successfully stored");
                         Log.d(TAG, "DocumentSnapshot successfully written!");
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Message.message( mContext, "Failed to store Today's Survey");
+                        Message.message( mContext, "Failed to store Survey");
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
