@@ -116,11 +116,13 @@ public class DBAdapter {
     }
     public Task<QuerySnapshot> getWeekSurveys(){
         Calendar calendar = Calendar.getInstance();
+        Date upperBound = calendar.getTime();
         calendar.add(Calendar.DATE, -6);
-        Date temp = calendar.getTime();
+        Date lowerBound = calendar.getTime();
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
-                .whereGreaterThanOrEqualTo("todaysDate", temp)
+                .whereGreaterThanOrEqualTo("todaysDate", lowerBound)
+                .whereLessThanOrEqualTo("todaysDate", upperBound)
                 .orderBy("todaysDate", Query.Direction.DESCENDING)
                 .limit(7)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

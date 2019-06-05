@@ -37,17 +37,12 @@
         android:id="@+id/num4_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="322dp"
-        android:layout_marginBottom="193dp"
         android:text="4"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID3"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID3"
         app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID3" />
 
     <RadioButton
@@ -67,18 +62,13 @@
         android:id="@+id/num3_ID"
         android:layout_width="18dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="72dp"
         android:text="3"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/num2_ID"
-        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID2"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID2"
+        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID2" />
 
     <RadioButton
         android:id="@+id/TodayMoodBtnID2"
@@ -98,17 +88,12 @@
         android:id="@+id/num2_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="199dp"
-        android:layout_marginBottom="60dp"
         android:text="2"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/num1_ID"
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID1"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID1"
         app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID1" />
 
     <RadioButton
@@ -128,17 +113,12 @@
         android:id="@+id/num1_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="322dp"
-        android:layout_marginBottom="59dp"
         android:text="1"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/TodayMoodBtnID3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID0"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID0"
         app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID0" />
 
     <RadioButton
@@ -192,36 +172,25 @@
         android:id="@+id/num5_ID"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="198dp"
-        android:layout_marginBottom="58dp"
         android:text="5"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/num4_ID"
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID4"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID4"
         app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID4" />
 
     <TextView
         android:id="@+id/num6_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="206dp"
         android:text="6"
         android:textColor="#4EB4A1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
-        app:layout_constraintStart_toEndOf="@+id/num5_ID"
-        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/TodayMoodBtnID5"
+        app:layout_constraintStart_toStartOf="@+id/TodayMoodBtnID5"
+        app:layout_constraintTop_toBottomOf="@+id/TodayMoodBtnID5" />
 
 
 </android.support.constraint.ConstraintLayout>

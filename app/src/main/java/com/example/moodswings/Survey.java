@@ -14,6 +14,7 @@ public class Survey implements Parcelable {
     private Integer activities = 0;
     private String diaryDate = "";
     private String UID = "";
+    private Boolean tomorrowsSurvey = false;
 
     // Constructors
     public Survey(){
@@ -75,6 +76,7 @@ public class Survey implements Parcelable {
     String getDiaryDate(){
         return diaryDate;
     }
+    boolean getTomorrowsSurvey(){ return tomorrowsSurvey;}
     public String getUID() { return UID; }
 
     // Modify Functions
@@ -92,6 +94,9 @@ public class Survey implements Parcelable {
     }
     void setUID(String newUID){
         this.UID = newUID;
+    }
+    void setTomorrowsSurvey(boolean value){
+        this.tomorrowsSurvey = value;
     }
     private void updateDiaryDate(){
         diaryDate = this.todaysDate();
@@ -120,11 +125,8 @@ public class Survey implements Parcelable {
                 + calendar.get(Calendar.YEAR);
     }
     public Date getTodaysDate(){
-        return new Date();
-    }
-    public Date getTomorrowsDate(){
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        if(tomorrowsSurvey) calendar.add(Calendar.DAY_OF_YEAR, 1);
         return calendar.getTime();
     }
     public String toString(){
