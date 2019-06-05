@@ -10,26 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Wednesday, May 22, 2019"
+        android:text="@string/example_date"
         android:textSize="20sp"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/Mood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mood: 2"
+        android:text="@string/example_mood"
         android:layout_marginStart="16dp"/>
     <TextView
         android:id="@+id/surveyEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Survey Entry: TIFU"
+        android:text="@string/example_entry"
         android:layout_marginStart="16dp"/>
 
     <TextView
         android:id="@+id/Activities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Activities: School"
+        android:text="@string/example_activity"
         android:layout_marginStart="16dp"/>
 </LinearLayout>
