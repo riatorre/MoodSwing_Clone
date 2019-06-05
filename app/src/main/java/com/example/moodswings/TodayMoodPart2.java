@@ -25,7 +25,7 @@ public class TodayMoodPart2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_mood_part2);
 
-        /*initialize Mood Radio Buttons to correlating buttons on activity_today_mood_part2*/
+        /*initialize Activity Radio Buttons to correlating buttons on activity_today_mood_part2*/
         work_schoolID = findViewById(R.id.Work_SchoolID);
         exerciseID = findViewById(R.id.ExericseID);
         hobbiesID = findViewById(R.id.HobbiesID);
