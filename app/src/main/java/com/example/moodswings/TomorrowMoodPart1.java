@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import java.util.Date;
+
 public class TomorrowMoodPart1 extends AppCompatActivity {
 
         final Survey survey = new Survey();
@@ -74,6 +76,8 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
             if(survey.getActivities()==0){
                 Message.message(this, "Please choose an activity.");
             }else{
+                String date = survey.getTomorrowsDate();
+                survey.updateDiaryDate(date);
                 db.addSurvey(survey);
                 Intent goToSurveypart1_Tomorrow_1 = new Intent(getApplicationContext(), MainActivity.class);
                 goToSurveypart1_Tomorrow_1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
