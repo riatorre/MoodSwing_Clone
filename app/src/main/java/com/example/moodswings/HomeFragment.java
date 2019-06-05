@@ -54,10 +54,6 @@ public class HomeFragment extends Fragment {
         today_button.setBackgroundResource(R.drawable.noinput);
         tomorrow_button.setBackgroundResource(R.drawable.noinput);
 
-
-        //DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-
-
         Task<QuerySnapshot> retrieveSurvey = db.getSurvey(survey.todaysDate());
         retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -215,7 +211,8 @@ public class HomeFragment extends Fragment {
                                     barEntries.add(new BarEntry(0f, finalI));
                                 }
                                 BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
-// hide legend
+
+                                /*hide legend*/
                                 Legend legend = barchart.getLegend();
                                 legend.setEnabled(false);
                                 barchart.invalidate();
