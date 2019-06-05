@@ -76,7 +76,7 @@ public class TomorrowMoodPart1 extends AppCompatActivity {
             if(survey.getActivities()==0){
                 Message.message(this, "Please choose an activity.");
             }else{
-                String date = survey.getTomorrowsDate();
+                String date = survey.tomorrowsDate();
                 survey.updateDiaryDate(date);
                 db.addSurvey(survey);
                 Intent goToSurveypart1_Tomorrow_1 = new Intent(getApplicationContext(), MainActivity.class);

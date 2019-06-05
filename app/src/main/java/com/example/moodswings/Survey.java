@@ -122,19 +122,10 @@ public class Survey implements Parcelable {
     public Date getTodaysDate(){
         return new Date();
     }
-    public String getTomorrowsDate(){
-        //Calendar calendar = Calendar.getInstance();
-        //calendar.add(Calendar.DAY_OF_YEAR, 1);
-        //return calendar.getTime();
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.add(Calendar.DATE, 1);
-        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
-                + ", "
-                + (calendar.get(Calendar.MONTH)+1)
-                + "/"
-                + calendar.get(Calendar.DATE)
-                + "/"
-                + calendar.get(Calendar.YEAR);
+    public Date getTomorrowsDate(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return calendar.getTime();
     }
     public String toString(){
         return "Date: " + diaryDate

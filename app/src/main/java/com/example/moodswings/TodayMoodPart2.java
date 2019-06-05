@@ -7,18 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import java.util.Objects;
+
 public class TodayMoodPart2 extends AppCompatActivity {
-
-    final Survey survey = new Survey();
-
-
     private RadioButton work_schoolID;
     private RadioButton exerciseID;
     private RadioButton hobbiesID;
     private RadioButton leisureID;
     private RadioButton errandsID;
     private RadioButton socialID;
-
+    private Survey survey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,7 @@ public class TodayMoodPart2 extends AppCompatActivity {
         leisureID = findViewById(R.id.LeisureTimeID);
         errandsID = findViewById(R.id.ErrandsID);
         socialID = findViewById(R.id.SocialEventID);
+        survey = Objects.requireNonNull(getIntent().getExtras()).getParcelable("survey");
 
         work_schoolID.setOnClickListener(new View.OnClickListener() {
             @Override
