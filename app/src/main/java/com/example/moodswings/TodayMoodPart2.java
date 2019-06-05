@@ -9,26 +9,35 @@ import android.widget.RadioButton;
 import java.util.Objects;
 
 public class TodayMoodPart2 extends AppCompatActivity {
+    /*initialize object survey in order to put activities in survey object*/
+    private Survey survey;
+
+    /*initialize Activity Radio Buttons*/
     private RadioButton work_schoolID;
     private RadioButton exerciseID;
     private RadioButton hobbiesID;
     private RadioButton leisureID;
     private RadioButton errandsID;
     private RadioButton socialID;
-    private Survey survey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_mood_part2);
+
+        /*initialize Mood Radio Buttons to correlating buttons on activity_today_mood_part2*/
         work_schoolID = findViewById(R.id.Work_SchoolID);
         exerciseID = findViewById(R.id.ExericseID);
         hobbiesID = findViewById(R.id.HobbiesID);
         leisureID = findViewById(R.id.LeisureTimeID);
         errandsID = findViewById(R.id.ErrandsID);
         socialID = findViewById(R.id.SocialEventID);
+
+        /*Get Survey Data*/
         survey = Objects.requireNonNull(getIntent().getExtras()).getParcelable("survey");
 
+        /*Create setOnClickListeners for every Radio Button
+         * If a certain Radio Button is pressed, go to function handleClick(view)*/
         work_schoolID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +76,9 @@ public class TodayMoodPart2 extends AppCompatActivity {
         });
     }
 
+    /*if "Next" button is clicked:
+     * if no activity was pressed, send a message saying please choose a activity
+     * else create a new Intent and go to final Survey page*/
     public void onClickSurveypage2(View view) {
         if(survey.getActivities()==0){
             Message.message(this, "Please choose an activity.");
@@ -77,6 +89,8 @@ public class TodayMoodPart2 extends AppCompatActivity {
         }
     }
 
+    /*Toggles mood Radio Buttons to a darker color if clicked
+     * goes to resetRadioBtns() to untoggle activity buttons*/
     private void handleClick(View view){
         int id = view.getId();
         resetRadioBtns();
@@ -109,6 +123,8 @@ public class TodayMoodPart2 extends AppCompatActivity {
                 survey.setActivities(0);
         }
     }
+
+    /*untoggles mood Radio Buttons*/
     private void resetRadioBtns(){
         work_schoolID.setBackgroundResource(R.drawable.rounded_button);
         exerciseID.setBackgroundResource(R.drawable.rounded_button);
