@@ -9,15 +9,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+    private GoogleSignInClient mGoogleSignInClient;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
 
 
@@ -44,6 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
                             // LogOut
                             mAuth.signOut();
+                            mGoogleSignInClient.signOut().addOnCompleteListener(
+                                    new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()) {
+                                                Message.message(MainActivity.this,
+                                                        "Logout Successful");
+                                            }else{
+                                                Message.message(MainActivity.this,
+                                                        "Logout Unsuccessful");
+                                            }
+                                        }
+                                    });
 
                             selectedFragment = new LoginFragment();
                             break;

@@ -184,11 +184,9 @@ public class HomeFragment extends Fragment {
                         int arrayListIndex = mySurveys.size()-1;
                         for(int finalI = 0; finalI < 7; finalI++){
                             days.add(date);
-                            Log.d("REEE", date5);
                             if(mySurveys != null
                                     && arrayListIndex >= 0
                                     && date5.equals(mySurveys.get(arrayListIndex).getDiaryDate())){
-                                Log.d("REEE", mySurveys.get(arrayListIndex).toString());
                                 switch (mySurveys.get(arrayListIndex).getMood()){
                                     case 1:
                                         barEntries.add(new BarEntry(1f, finalI));

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import java.util.Objects;
 public class NotificationFragment extends Fragment {
     private DBAdapter db = new DBAdapter(getActivity());
     private ArrayList<Survey> mySurveys = new ArrayList<>();
-    private String TAG = "NotificationFragment";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,7 +41,6 @@ public class NotificationFragment extends Fragment {
                                 Integer activities = Objects.requireNonNull(document.getDouble("activities")).intValue();
                                 Survey temp = new Survey(moodEnum,diaryEntry,activities,diaryDate);
                                 mySurveys.add(temp);
-                                Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                             if(mySurveys != null) {
                                 SurveyAdapter surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
@@ -53,10 +50,7 @@ public class NotificationFragment extends Fragment {
                         } else {
                             Message.message(getActivity(),
                                     "Unable to retrieve your Surveys");
-                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                        assert mySurveys != null;
-                        Log.d(TAG,mySurveys.toString());
                     }
                 });
         return view;
