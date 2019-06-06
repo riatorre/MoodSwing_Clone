@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -162,57 +163,58 @@ public class HomeFragment extends Fragment {
             retrieveSurvey.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    survey = null;
-                    int finalI = 0;
                     if (task.isSuccessful()) {
                         Survey temp;
-                        String date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                        String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
-                                ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
-                                + calendar.get(Calendar.DATE) + "/"
-                                + calendar.get(Calendar.YEAR);
-                        calendar.add(Calendar.DAY_OF_WEEK, 1);
                         for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                            days.add(date);
                             if (document.exists()) {
-                                survey = document.toObject(Survey.class);
                                 String diaryDate = document.getString("diaryDate");
                                 Integer moodEnum = Objects.requireNonNull(document.getDouble("mood")).intValue();
                                 String diaryEntry = document.getString("diaryEntry");
                                 Integer activities = Objects.requireNonNull(document.getDouble("activities")).intValue();
                                 temp = new Survey(moodEnum, diaryEntry, activities, diaryDate);
-                                while(!date5.equals(diaryDate)) {
-                                    date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                                    date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
-                                            ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
-                                            + calendar.get(Calendar.DATE) + "/"
-                                            + calendar.get(Calendar.YEAR);
-                                    calendar.add(Calendar.DAY_OF_WEEK, 1);
-                                    days.add(date);
-                                    finalI++;
-                                }
-                                int mood = temp.getMood();
                                 mySurveys.add(temp);
-                                if (mood == 1) {
-                                    barEntries.add(new BarEntry(1f, finalI));
-                                }
-                                if (mood == 2) {
-                                    barEntries.add(new BarEntry(2f, finalI));
-                                }
-                                if (mood == 3) {
-                                    barEntries.add(new BarEntry(3f, finalI));
-                                }
-                                if (mood == 4) {
-                                    barEntries.add(new BarEntry(4f, finalI));
-                                }
-                                if (mood == 5) {
-                                    barEntries.add(new BarEntry(5f, finalI));
-                                }
-                                if (mood == 6) {
-                                    barEntries.add(new BarEntry(6f, finalI));
-                                }
-                                if (mood == 0) {
-                                    barEntries.add(new BarEntry(0f, finalI));
+                            }
+                        }
+                        String date = calendar.getDisplayName(Calendar.DAY_OF_WEEK,
+                                Calendar.LONG,
+                                Locale.getDefault());
+                        String date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK,
+                                Calendar.LONG,
+                                Locale.getDefault()) +
+                                ", " + (calendar.get(Calendar.MONTH) + 1) + "/"
+                                + calendar.get(Calendar.DATE) + "/"
+                                + calendar.get(Calendar.YEAR);
+                        calendar.add(Calendar.DAY_OF_WEEK, 1);
+                        int arrayListIndex = mySurveys.size()-1;
+                        for(int finalI = 0; finalI < 7; finalI++){
+                            days.add(date);
+                            Log.d("REEE", date5);
+                            if(mySurveys != null
+                                    && arrayListIndex >= 0
+                                    && date5.equals(mySurveys.get(arrayListIndex).getDiaryDate())){
+                                Log.d("REEE", mySurveys.get(arrayListIndex).toString());
+                                switch (mySurveys.get(arrayListIndex).getMood()){
+                                    case 1:
+                                        barEntries.add(new BarEntry(1f, finalI));
+                                        break;
+                                    case 2:
+                                        barEntries.add(new BarEntry(2f, finalI));
+                                        break;
+                                    case 3:
+                                        barEntries.add(new BarEntry(3f, finalI));
+                                        break;
+                                    case 4:
+                                        barEntries.add(new BarEntry(4f, finalI));
+                                        break;
+                                    case 5:
+                                        barEntries.add(new BarEntry(5f, finalI));
+                                        break;
+                                    case 6:
+                                        barEntries.add(new BarEntry(6f, finalI));
+                                        break;
+                                    default:
+                                        barEntries.add(new BarEntry(0f, finalI));
+                                        break;
                                 }
                                 BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 // hide legend
@@ -231,23 +233,44 @@ public class HomeFragment extends Fragment {
                                 barchart.setDragEnabled(false);
                                 barchart.setScaleEnabled(false);
 
-                                if(surveyAdapter == null) surveyAdapter = new SurveyAdapter(getActivity(), mySurveys);
+                                if(surveyAdapter == null) surveyAdapter =
+                                        new SurveyAdapter(getActivity(), mySurveys);
                                 ListView surveysList = view.findViewById(R.id.list_home);
                                 surveysList.setAdapter(surveyAdapter);
 
-
+                                arrayListIndex--;
+                            }else{
+                                barEntries.add(new BarEntry(0f, finalI));
+                                BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+// hide legend
+                                Legend legend = barchart.getLegend();
+                                legend.setEnabled(false);
+                                barchart.invalidate();
+                                XAxis xAxis = barchart.getXAxis();
+                                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                                xAxis.setDrawGridLines(false);
+                                barchart.setDescription(null);
+                                BarData theData = new BarData(days, barDataSet);
+                                barchart.setData(theData);
+                                barchart.animateY(2000);
+                                barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                                barchart.setTouchEnabled(true);
+                                barchart.setDragEnabled(false);
+                                barchart.setScaleEnabled(false);
                             }
-                            date = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-                            date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
-                                    ", "+ (calendar.get(Calendar.MONTH) + 1) + "/"
+                            date = calendar.getDisplayName(Calendar.DAY_OF_WEEK,
+                                    Calendar.LONG,
+                                    Locale.getDefault());
+                            date5 = calendar.getDisplayName(Calendar.DAY_OF_WEEK,
+                                    Calendar.LONG,
+                                    Locale.getDefault()) +
+                                    ", " + (calendar.get(Calendar.MONTH) + 1) + "/"
                                     + calendar.get(Calendar.DATE) + "/"
                                     + calendar.get(Calendar.YEAR);
                             calendar.add(Calendar.DAY_OF_WEEK, 1);
-                            finalI++;
                         }
                     }
                 }
             });
         }
-
 }

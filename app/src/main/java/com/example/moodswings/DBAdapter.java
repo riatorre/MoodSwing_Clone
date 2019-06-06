@@ -108,6 +108,7 @@ class DBAdapter {
         Date lowerBound = calendar.getTime();
         return db.collection(surveyStorePath)
                 .whereEqualTo("uid", uid)
+                .whereEqualTo("tomorrowsSurvey", false)
                 .whereGreaterThanOrEqualTo("todaysDate", lowerBound)
                 .whereLessThanOrEqualTo("todaysDate", upperBound)
                 .orderBy("todaysDate", Query.Direction.DESCENDING)
