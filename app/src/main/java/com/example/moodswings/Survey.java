@@ -26,12 +26,14 @@ public class Survey implements Parcelable {
         this.activities = activities;
         this.updateDiaryDate();
     }
+
     public Survey(Integer moodEnum, String diaryEntry, Integer activities, String diaryDate){
         this.moodEnum = moodEnum;
         this.diaryEntry = diaryEntry;
         this.activities = activities;
         this.diaryDate = diaryDate;
     }
+
     public Survey(Parcel in){
         this.moodEnum = in.readInt();
         this.diaryEntry = in.readString();
@@ -84,14 +86,17 @@ public class Survey implements Parcelable {
         moodEnum = newMood;
         this.updateDiaryDate();
     }
+
     void setDiaryEntry(String newEntry){
         diaryEntry = newEntry;
         this.updateDiaryDate();
     }
+
     void setActivities(Integer newActivities){
         activities = newActivities;
         this.updateDiaryDate();
     }
+
     void setUID(String newUID){
         this.UID = newUID;
     }

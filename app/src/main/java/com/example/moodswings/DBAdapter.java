@@ -101,6 +101,7 @@ class DBAdapter {
                 }
         );
     }
+
     Task<QuerySnapshot> getWeekSurveys(){
         Calendar calendar = Calendar.getInstance();
         Date upperBound = calendar.getTime();

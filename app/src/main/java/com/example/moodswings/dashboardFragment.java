@@ -20,8 +20,6 @@ public class dashboardFragment extends Fragment {
         final Button OkButton = view.findViewById(R.id.fragment_OK_button_ID);
         final Button survey_tomorrow = view.findViewById(R.id.fragment_OK_button_ID_Tomorrow_1);
 
-
-
         OkButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
